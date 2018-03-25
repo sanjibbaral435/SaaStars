@@ -14,16 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+#from django.urls import path
 from animalscience.webapp import views
 from django.conf.urls import url, include
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-]
+#urlpatterns = [
+ #   path('admin/', admin.site.urls),
+#]
 
 # Use include() to add paths from the webapp application 
-from django.urls import include
+#from django.urls import include
 
 #urlpatterns += [
 #    path('webapp/', include('webapp.urls')),
@@ -31,9 +31,9 @@ from django.urls import include
 
 #Add URL maps to redirect the base URL to our application
 from django.views.generic import RedirectView
-urlpatterns += [
-    path('', RedirectView.as_view(url='/webapp/')),
-]
+#urlpatterns += [
+#    path('', RedirectView.as_view(url='/webapp/')),
+#]
 
 urlpatterns = [
     #path('', views.index, name='index'),
