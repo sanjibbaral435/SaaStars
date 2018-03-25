@@ -1,0 +1,12 @@
+{% extends "logged_in.html" %}
+
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <br>
+  {{ form.as_p }} <br>
+  <button type="submit" class="btn btn-success">Upload</button>
+</form>
+<br>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends login_status|yesno:"logged_in.html,not_logged_in.html" %}
+
+
+{% block content %}
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+</style>
+
+
+{% load staticfiles %}
+<!-- Header with Background Image -->
+<header class="business-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-auto"><div id="phage-carousel" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#phage-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#phage-carousel" data-slide-to="1"></li>
+                <li data-target="#phage-carousel" data-slide-to="2"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/slider_1.jpg' %}" alt="Phage 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/slider_2.jpg' %}" alt="Phage 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/slider_3.jpg' %}" alt="Phage 3">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#phage-carousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#phage-carousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+
+        </div></div>
+            
+        </div>
+    </div>
+</header>
+
+<!-- Page Content -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">    
+          <h4 class="mt-4 text-maroon">Message Us</h4>
+          <form action="#">
+            <label for="fname">Name</label>
+            <input type="text" id="fname" name="name" placeholder="Your name..">
+        
+            <label for="lname">Email</label>
+            <input type="text" id="lname" name="email" placeholder="Your Email">
+            
+            <label for="lname">Phone Number (optional)</label>
+            <input type="text" id="lname" name="phone" placeholder="Your Phone No">
+
+            <label for="subject">Subject</label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+        
+            <input type="submit" value="Submit">
+          </form>
+          <br>
+        </div>
+
+        
+        <div class="col-sm-4">
+                <h4 class="mt-4 text-maroon">Contact Us</h4>
+                <address style="font-size: smaller;">
+                    <strong>Animal Behavior And Welfare Labratory</strong>&nbsp;&nbsp;&nbsp;<a class="text-maroon" href="http://aggiemap.tamu.edu/?MyMap=9140"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                    <br>Dept. of Animal Science
+                    <br>Room 212F Kleberg
+                    <br>Texas A&M University
+                    <br>College Station, TX USA 77843
+                    <br>
+                </address>
+        </div>
+        <br>
+    </div>
+</div>
+
+{% endblock %}

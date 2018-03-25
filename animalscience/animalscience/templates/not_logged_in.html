@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PhageBank</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Custom styles for this template -->
+    {% load staticfiles %}
+    <link href="{% static 'css/phage.css' %}" rel="stylesheet">
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+            integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+            integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+            crossorigin="anonymous"></script>
+    <script src="{% static 'js/signup.js' %}"></script>
+    <script src="{% static 'js/login.js' %}"></script>
+
+</head>
+
+
+<body>
+<div style="background-color: #fff8dc;" class="temp">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-maroon fixed-top temp">
+        <div class="container">
+            <a class="navbar-brand" href="/"><h2>Animal Research Lab</h2></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link text-white" href="/" title="Home">Home
+                        </a>
+                    </li>&nbsp; &nbsp;
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#" title="About Us">About Us</a>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/peoples/" title="Peoples">People</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#" title="Projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/articles/" title="Research Articles">Articles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#" title="Ethograms">Ethograms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/contact_us/" title="Contact Us">Contact Us</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <button class="nav-link btn btn-light js-create-login" type="button" data-toggle="modal"
+                            data-target="#myModalLogin">Login
+                    </button>
+                    &nbsp;&nbsp;
+                    <a class="nav-link text-light" href="#"><u style="font-size:smaller; color: #f9eff0;">Forgot
+                        Password?</u></a>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <br>
+
+    <div class="container page-content">
+        {% include 'messages.html' %}
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <div class="modal fade" id="myModalSignup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog model-sm" role="document">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <!-- /.container -->
+    <!-- Footer -->
+    <footer class="bg-maroon temp">
+        <div class="container">
+            <p class="text-white float-left">&copy; Animal Behavior And Welfare Labratory</p>
+            <div class="d-inline-block float-right">
+                <a target="_blank" href="https://www.facebook.com/tamuanimalscience" class="text-center text-white">
+                    <i class="fa fa-2x fa-fw fa-facebook"></i></a>&nbsp;&nbsp;&nbsp;
+                <a href="https://twitter.com/tamuansc" class="text-white">
+                    <i class="fa fa-2x fa-fw fa-twitter"></i></a>&nbsp;&nbsp;&nbsp;
+                <a href="https://www.linkedin.com/groups/4890306/profile" class="text-white">
+                    <i class="fa fa-2x fa-fw fa-linkedin"></i></a>&nbsp;&nbsp;&nbsp;
+                <a href="https://plus.google.com/discover" class="text-white">
+                    <i class="fa fa-2x fa-fw fa-google-plus"></i></a>
+            </div>
+        </div>
+        <!-- /.container -->
+    </footer>
+    <script src="{% static 'js/signup.js' %}"></script>
+    <script src="{% static 'js/login.js' %}"></script>
+</div>
+</body>
+
+</html>

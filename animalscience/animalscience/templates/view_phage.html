@@ -1,0 +1,320 @@
+{% extends login_status|yesno:"logged_in.html,not_logged_in.html" %}
+
+{% block content %}
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+    <div class="modal fade" id="myDeleteModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">{{ "Phage Name: " }}{{  item.phage_name }}</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Are you sure you want to delete?
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+          <button type="button" class="btn btn-primary"><a style="text-decoration: none; color: white;" href='/delete/?name={{ item.phage_name }}'>Yes</a></button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    <div class="modal fade" id="myEditModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">{{ "Phage Name: " }}{{  item.phage_name }}</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Are you sure you want to edit?
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+          <button type="button" class="btn btn-primary"><a style="text-decoration: none; color: white;" href='/edit_details/?name={{ item.phage_name }}'>Yes</a></button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    <body data-spy="scroll" data-target="#myScrollspy" data-offset="1">
+
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-sm-3 col-4" id="myScrollspy">
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+            <a class="btn btn-outline-info nav-link active text-maroon" href="#section1">Basic Details</a>
+        </li>
+          <br>
+        <li class="nav-item">
+            <a class="btn btn-outline-info nav-link text-maroon" href="#section3">Researcher Information</a>
+        </li>
+          <br>
+          <li class="nav-item">
+              <a class="btn btn-outline-info nav-link text-maroon" href="#section42">Experimenter Data</a>
+        </li>
+          <br>
+              </li>
+          <li class="nav-item">
+              <a class="btn btn-outline-info nav-link text-maroon    " href="#IsolatorData">Isolator Data</a>
+        </li>
+          <div class="divider"></div>
+          {% if login_status %}
+          <li class="nav-item"><a class="btn btn-outline-info nav-link"  href="#" data-toggle="modal" data-target="#myDeleteModal">Delete    <i class="fa fa-fw fa-trash"></i></a></li>
+          <br>
+          <li class="nav-item"><a class="btn btn-outline-info nav-link"  href="#" data-toggle="modal" data-target="#myEditModal">Edit    <i class="fa fa-fw fa-edit"></i></a></li>
+          {% else %}
+          <li class="nav-item"><a class="btn btn-outline-info nav-link disabled"  href="#" >Delete    <i class="fa fa-fw fa-trash"></i></a></li>
+          <br>
+          <li class="nav-item"><a class=" btn btn-outline-info nav-link disabled"  href="#" >Edit    <i class="fa fa-fw fa-edit"></i></a></li>
+          {% endif %}
+      </ul>
+    </nav>
+    <div class="col-sm-9 col-8">
+ <div id="section1">
+     <br>
+     <br>
+     <br>
+     <br>
+     <h4 class="text-maroon">Phage Details:</h4>
+      <div class="row">
+                        <div class="col-md-6">
+                        <div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    {% if count %}
+
+    {% for x in dest_dir %}
+    <li data-target="#demo" data-slide-to=forloop.counter></li>
+
+      {% endfor %}
+  {% else %}
+         <li data-target="#demo" data-slide-to="0" class="active"></li>
+  {% endif %}
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+  {% if count %}
+    {% for x in dest_dir %}
+        <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}" class="border">
+            <img src="/media/images/{{ item.phage_name }}/{{ x }}" width="300" height="300" class="img-rounded img-responsive"/>
+        </div>
+    {% endfor %}
+  {% else%}
+   <div class="carousel-item active" class="border">
+    {% load staticfiles %}
+    <img src="{% static 'images/phage.png' %}" alt="Demo image" width="300" height="300" class="img-rounded img-responsive" />
+
+    </div>
+    <div class="carousel-item">
+        {% load staticfiles %}
+        <img src="{% static 'images/phage.png' %}" alt="Demo image" width="300" height="300" class="img-rounded img-responsive" />
+    </div>
+  {% endif %}
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+                        </div>
+                        <div class="col-md-6">
+                            <p><b>Phage Name       : </b>  {{ item.phage_name }}</p>
+                            <p><b>Host Name        : </b>  {{ item.phage_host_name }}</p>
+                            <p><b>Isolator Name    : </b>  {{ item.phage_isolator_name }}</p>
+                            <p><b>Experimenter Name: </b>  {{ item.phage_experimenter_name }}</p>
+                            <p><b>CPT ID           : </b>  {{ item.phage_CPT_id }}</p>
+                            <p><b>Previous names   : </b>
+                                {%for query in previous_names %}
+                                {{  query.phagename}}{{","}}
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+    </div>
+    <div id="section3" class="container-fluid ">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h4 class="text-maroon">Researcher Information</h4>
+        <br>
+        <table id="phageDetails" cellspacing="0" class="table table-striped">
+	<tbody>
+		<tr><td class="detailLabel">Phage experimenter name</td><td class="detailValue">{{ item.phage_experimenter_name }}</td></tr>
+		<tr><td class="detailLabel">Phage isolator name</td><td class="detailValue">{{ item.phage_isolator_name }}</td></tr>
+		<tr><td class="detailLabel">Phage lab</td><td class="detailValue">
+            {%  if item.phage_lab == '0' %}
+            Lab - A
+            {% endif %}
+            {%  if item.phage_lab == '1' %}
+            Lab - B
+            {% endif %}
+        </td></tr>
+		<tr><td class="detailLabel">CPT Id</td><td class="detailValue"> {{ item.phage_CPT_id }}</td></tr>
+	</tbody>
+	</table>
+    </div>
+    <div id="section42" class="container-fluid ">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h4 class="text-maroon">Experimenter Data</h4>
+        <br>
+        <table id="phageDetails" cellspacing="0" class="table table-striped">
+	    <tbody>
+        {%for query in expdata %}
+		<tr><td class="detailLabel">Owner</td><td class="detailValue">{{query.owner}}</td></tr>
+		<tr><td class="detailLabel">Time Stamp</td><td class="detailValue">{{ query.timestamp }}</td></tr>
+		<tr><td class="detailLabel">catogeory</td><td class="detailValue">{{ query.category }}</td></tr>
+		<tr><td class="detailLabel">Full Name</td><td class="detailValue">{{ query.full_name }}</td></tr>
+        <tr><td class="detailLabel">Short Name</td><td class="detailValue">{{ query.short_name }}</td></tr>
+    <tr><td class="detailLabel">Methods</td><td class="detailValue">{{ query.methods }}</td></tr>
+    		<tr><td class="detailLabel">Results</td><td class="detailValue">{{ query.results }}</td></tr>
+        {%endfor %}
+	</tbody>
+
+	</table>
+    </div>
+
+      <div id="IsolatorData" class="container-fluid ">
+          <br>
+          <br>
+          <br>
+          <br>
+          <h4 class="text-maroon">Isolator Data</h4>
+          <br>
+        <table id="phageDetails" cellspacing="0" class="table table-striped">
+	    <tbody>
+        {%for query in isodata %}
+		<tr><td class="detailLabel">Owner</td><td class="detailValue">{{query.owner_name}}</td></tr>
+		<tr><td class="detailLabel">Time Stamp</td><td class="detailValue">{{ query.TimeStamp }}</td></tr>
+		<tr><td class="detailLabel">Location</td><td class="detailValue">{{ query.location }}</td></tr>
+		<tr><td class="detailLabel">Type</td><td class="detailValue">{{ query.type1 }}</td></tr>
+        {%endfor %}
+	</tbody>
+	</table>
+    </div>
+
+  </div>
+</div>
+</div>
+</body>
+
+<style>
+body{
+padding-top:54px;
+position:relative;
+}
+
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
+ul.nav-pills {
+      top: 100px;
+      position: fixed;
+}
+div.col-8 div {
+    height: 600px;
+}
+#demo {
+  heigth: 50%;
+}
+
+.carousel-caption {
+    color: black;
+}
+td{
+    word-wrap: break-word;
+    min-width: 160px;
+    max-width: 160px;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #800000;
+}
+
+.btn-outline-info {
+    color: #800000;
+    background-color: transparent;
+    background-image: none;
+    border-color: #800000;
+}
+
+.btn-outline-info:hover {
+    color: #fff;
+    background-color: #800000;
+    background-image: none;
+    border-color: #800000;
+}
+
+.btn-outline-info:not([disabled]):not(.disabled).active, .btn-outline-info:not([disabled]):not(.disabled):active, .show>.btn-outline-info.dropdown-toggle {
+    color: #fff;
+    background-color: #800000;
+    border-color: #800000;
+    box-shadow: 0 0 0 0.2rem #800000;
+}
+
+
+.divider{
+    position: relative;
+    width: 100%;
+    height: 3px;
+    background: #800000;
+    margin: 30px auto;
+}
+.divider:after{
+  width: 10px;
+  height: 10px;
+  line-height: 30px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #800000;
+  background: #fff;
+  border:3px solid #fff;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -15px;
+  margin-left: -15px;
+  text-align: center;
+}
+</style>
+{% endblock %}

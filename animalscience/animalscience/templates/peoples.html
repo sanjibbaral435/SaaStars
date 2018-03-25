@@ -1,0 +1,150 @@
+{% extends login_status|yesno:"logged_in.html,not_logged_in.html" %}
+
+
+{% block content %}
+
+{% load staticfiles %}
+<!-- Header with Background Image -->
+<header class="business-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-auto"><div id="phage-carousel" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#phage-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#phage-carousel" data-slide-to="1"></li>
+                <li data-target="#phage-carousel" data-slide-to="2"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/slider_1.jpg' %}" alt="Phage 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/slider_2.jpg' %}" alt="Phage 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/slider_3.jpg' %}" alt="Phage 3">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#phage-carousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#phage-carousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+
+        </div></div>
+            
+        </div>
+    </div>
+</header>
+
+<!-- Page Content -->
+<div class="container">    
+  <div class="row" align="center">
+      <h4 class="mt-4 text-maroon" text-align="center">Faculty</h4>
+  </div>
+</div><br>
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-body"><img src="{% static 'images/Daigle.jpg' %}" class="img-responsive" width="70%" height="70%" alt="Image"></div>
+        <div class="panel-footer"></div>
+        <div class="panel-footer">Postdoctoral training, Center for Animal Welfare Science, Purdue University</div>
+        <div class="panel-footer">Ph.D. in Animal Science, Michigan State University</div>
+        <div class="panel-footer">M.S. in Zoo & Aquarium Management, Michigan State University</div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+            <h3 class="mt-4 text-maroon">Dr. Courtney Daigle</h3>
+            <p class="text-maroon">Assistant Professor, Animal Welfare</p>
+            <p class="text-justify">Dr. Courtney Daigle is an Assistant Professor in the Nutrition section of the Department of Animal Science.  She received a Bachelor of Science in Zoology in 2004 from Oklahoma State University.  She worked in the zoo industry for several years before continuing her education at Michigan State University where she received a Master of Science in Zoo & Aquarium Management (2008) and a Doctor of Philosophy in Animal Science (2013).  During her graduate training she worked as an intern with the Smithsonian’s Conservation Biology Institute (2008), was a Junior research fellow at Wageningen University (2011), and was the technician for the Animal Behavior and Welfare Laboratory at Michigan State University (2008-2014).  She worked as a Postdoctoral Research Associate in the Center for Animal Welfare Science at Purdue University (2015).</p>
+            <p class="text-justify">Dr. Daigle specializes in evaluating management practices to optimize animal health, productivity, and welfare.  The Daigle Lab quantifies behavior to develop and validate technologies designed to measure species specific behaviors important to health, welfare, and productivity.</p>
+            <p class="text-justify">Her professional memberships include the International Society for Applied Ethology and the American Society of Animal Science.</p>
+    </div>
+  </div>
+</div><br><br>
+
+
+
+<div class="container">    
+  <div class="row" align="center">
+      <h4 class="mt-4 text-maroon" text-align="center">Grduate Students</h4>
+  </div>
+</div><br>
+
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-body"><img src="{% static 'images/Amanda.jpg' %}" class="img-responsive" width="70%" height="70%" alt="Image"></div>
+        <div class="panel-footer">Amanda Mathias</div>
+        <div class="panel-footer">Ph.D.</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-danger">
+        <div class="panel-body"><img src="{% static 'images/Emily.jpg' %}" class="img-responsive" width="70%" height="70%" alt="Image"></div>
+        <div class="panel-footer">Emily Ridge</div>
+        <div class="panel-footer">Masters Student</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-success">
+        <div class="panel-body"><img src="{% static 'images/Rachel.jpg' %}" class="img-responsive" width="70%" height="70%" alt="Image"></div>
+        <div class="panel-footer">Rachel Park</div>
+        <div class="panel-footer">Graduate Student</div>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+
+
+<div class="container">    
+  <div class="row" align="center">
+      <h4 class="mt-4 text-maroon" text-align="center">Undergraduate Student Workers</h4>
+  </div>
+</div><br>
+
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-body"><img src="{% static 'images/Xandra.jpg' %}" class="img-responsive" width="70%" height="70%" alt="Image"></div>
+        <div class="panel-footer">Xandra Meneses</div>
+        <div class="panel-footer">Major: Animal Science</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-danger">
+        <div class="panel-body"><img src="{% static 'images/Sarah.jpg' %}" class="img-responsive" width="70%" height="70%" alt="Image"></div>
+        <div class="panel-footer">Sarah Rico</div>
+        <div class="panel-footer">Major: Animal Science</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-success">
+        <div class="panel-body"><img src="{% static 'images/Makala.jpg' %}" class="img-responsive" width="70%" height="70%" alt="Image"></div>
+        <div class="panel-footer">Makala Herman</div>
+        <div class="panel-footer">Major: Biology</div>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+
+
+<!-- /.container -->
+
+{% endblock %}
