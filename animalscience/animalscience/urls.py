@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from webapp import views
+from animalscience.webapp import views
 from django.conf.urls import url, include
 
 urlpatterns = [
@@ -25,9 +25,9 @@ urlpatterns = [
 # Use include() to add paths from the webapp application 
 from django.urls import include
 
-urlpatterns += [
-    path('webapp/', include('webapp.urls')),
-]
+#urlpatterns += [
+#    path('webapp/', include('webapp.urls')),
+#]
 
 #Add URL maps to redirect the base URL to our application
 from django.views.generic import RedirectView
