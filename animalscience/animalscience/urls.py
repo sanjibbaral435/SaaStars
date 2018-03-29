@@ -14,20 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-#from django.urls import path
+from django.urls import path
 from animalscience.webapp import views
 from django.conf.urls import url, include
 
-#urlpatterns = [
- #   path('admin/', admin.site.urls),
-#]
+urlpatterns = [
+    #path('admin/', admin.site.urls),
+    #url(r'^admin/$',admin.site.urls),
+]
 
-# Use include() to add paths from the webapp application 
-#from django.urls import include
+#Use include() to add paths from the webapp application 
+from django.urls import include
 
-#urlpatterns += [
-#    path('webapp/', include('webapp.urls')),
-#]
+urlpatterns += [
+    path('webapp/', include('animalscience.webapp.urls')),
+]
 
 #Add URL maps to redirect the base URL to our application
 from django.views.generic import RedirectView
@@ -46,6 +47,7 @@ urlpatterns = [
     url(r'^articles/', views.articles, name='articles'),
     url(r'^contact_us/', views.contact_us, name='contact_us'),
     url(r'^search_phage/$', views.search_phage, name='search_phage'),
+    url(r'^admin/',admin.site.urls),
 ]
 
 # Use static() to add url mapping to serve static files during development (only)

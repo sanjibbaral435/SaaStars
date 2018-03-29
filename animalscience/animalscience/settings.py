@@ -26,7 +26,8 @@ SECRET_KEY = '^^02aa%o*^*1a@n5qmn$t85jfv@4o-wuedqyq!p6h%o)^0ah0m'
 DEBUG = True
 
 ALLOWED_HOSTS = ['d50a1537400c45aa84298a35ef3c4f06.vfs.cloud9.us-east-2.amazonaws.com',
-                'fierce-thicket-54678.herokuapp.com']
+                'fierce-thicket-54678.herokuapp.com',
+                '127.0.0.1']
 
 
 # Application definition
