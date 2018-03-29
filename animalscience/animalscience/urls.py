@@ -42,6 +42,7 @@ urlpatterns = [
     url(r'^search_phage/$', views.search_phage, name='search_phage'),
     url(r'^about_us/', views.about_us, name='about_us'),
     url(r'^peoples/', views.peoples, name='peoples'),
+    url(r'^projects/', views.projects, name='projects'),
     url(r'^articles/', views.articles, name='articles'),
     url(r'^contact_us/', views.contact_us, name='contact_us'),
     url(r'^search_phage/$', views.search_phage, name='search_phage'),
