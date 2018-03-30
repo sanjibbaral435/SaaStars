@@ -80,6 +80,18 @@
       </div>
     </div>
   </form>
+  <h2> All Articles</h2>
+  <div class="article list">
+    {% if articles_title_list %}
+        <ul>
+        {% for article in articles_title_list %}
+            <li><a href="#">{{ article.article_title }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Articles.</p>
+    {% endif %}
+  </div>
 </div>
 
 

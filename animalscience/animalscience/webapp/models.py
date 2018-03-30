@@ -1,5 +1,15 @@
 from django.db import models
 
+class researchdata(models.Model):
+    article_id = models.IntegerField()
+    article_title = models.CharField(max_length=30, default='none')
+    article_author_name = models.CharField(max_length=30, default='none')
+    article_year = models.DateField(null=True)
+    article_keywords = models.CharField(max_length=30, default='none')
+    def __str__(self):
+        return self.article_title
+
+
 class ProjectsData(models.Model):
     project_title = models.CharField(max_length=30, default='none')
     project_author_name = models.CharField(max_length=30, default='none')
