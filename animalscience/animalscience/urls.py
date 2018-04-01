@@ -46,6 +46,9 @@ urlpatterns = [
     url(r'^projects/', views.projects, name='projects'),
     url(r'^articles/', views.articles, name='articles'),
     url(r'^contact_us/', views.contact_us, name='contact_us'),
+    url(r'^peoples_amanda/', views.peoples_amanda, name='peoples_amanda'),
+    url(r'^peoples_rachel/', views.peoples_rachel, name='peoples_rachel'),
+    url(r'^peoples_emily/', views.peoples_emily, name='peoples_emily'),
     url(r'^search_phage/$', views.search_phage, name='search_phage'),
     url(r'^admin/',admin.site.urls),
 ]

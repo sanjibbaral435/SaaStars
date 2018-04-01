@@ -1,0 +1,78 @@
+{% extends login_status|yesno:"logged_in.html,not_logged_in.html" %}
+
+
+{% block content %}
+
+{% load staticfiles %}
+<!-- Header with Background Image -->
+<header class="business-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-auto"><div id="phage-carousel" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#phage-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#phage-carousel" data-slide-to="1"></li>
+                <li data-target="#phage-carousel" data-slide-to="2"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/slider_1.jpg' %}" alt="Phage 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/slider_2.jpg' %}" alt="Phage 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/slider_3.jpg' %}" alt="Phage 3">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#phage-carousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#phage-carousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+
+        </div></div>
+            
+        </div>
+    </div>
+</header>
+
+
+<br>
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-body"><img src="{% static 'images/Emily.jpg' %}" class="img-responsive" width="70%" height="70%" alt="Image"></div>
+        <div class="panel-footer"></div>
+        <div class="panel-footer">Masters Student in Animal Science</div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+            <h3 class="mt-4 text-maroon">Emily Ridge</h3>
+            <p class="text-justify"><b>Biography:</b> My name is Emily Ridge and I’m from Picture Butte, Alberta, Canada. I graduated with my Bachelors of Science in Animal Science from Texas A&M University in May 2017. I remained at Texas A&M to pursue my Masters degree in Animal Science under Dr. Courtney Daigle in the Animal Welfare and Behavior Lab. I was born and raised in the commercial cattle feeding industry and it instilled in me a passion for livestock animal welfare. I have worked extensively in commercial cattle feed yards and held an internship position for Elanco Canada. My current research in is two areas: feedyard employee attitude and personality and non-nutritive oral behaviors in beef cattle. I currently teach ANSC 310 Lab and assist in a dog socialization project in the department.</p>
+            <p class="text-justify"><b>Project Title:</b> Survey of Texas feedyard employees</p>
+            <p class="text-justify"><b>Project Description:</b>It has been proven in dairy, poultry and swine that stockperson personality, attitude and behavior strongly effects animal welfare in production settings. In the beef cattle industry, less research has been done in this area. To begin to better understand the dynamics of the human-animal relationship between beef cattle, we need to better understanding the working population in cattle feed yards. We have created a survey to administer to cattle stock people to better understand their perception of animals, their level of job satisfaction and socio-economic background. We will be administering the survey April 2018.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel panel-primary">
+        <p class="text-justify"><b>Project Title:</b> Effects of different diet compositions on tongue rolling behavior in beef cattle</p>
+        <p class="text-justify"><b>Project Description:</b> This study is one part of our effort to understand the connection between diet and non-nutritive oral stereotypies in cattle. Specifically, the cattle in this study are fed different levels of roughage in the diet. We are using video decoding to record the duration and frequency of tongue rolling behaviors to determine if there is a dietary based motivation to perform this behavior.</p>
+        <p class="text-justify"><a href="/peoples/">Back To Peoples</a></p>
+    </div>
+  </div>
+</div><br><br>
+
+<!-- /.container -->
+
+{% endblock %}

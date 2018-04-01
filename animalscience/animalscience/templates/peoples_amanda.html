@@ -1,0 +1,78 @@
+{% extends login_status|yesno:"logged_in.html,not_logged_in.html" %}
+
+
+{% block content %}
+
+{% load staticfiles %}
+<!-- Header with Background Image -->
+<header class="business-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-auto"><div id="phage-carousel" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#phage-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#phage-carousel" data-slide-to="1"></li>
+                <li data-target="#phage-carousel" data-slide-to="2"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/slider_1.jpg' %}" alt="Phage 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/slider_2.jpg' %}" alt="Phage 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/slider_3.jpg' %}" alt="Phage 3">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#phage-carousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#phage-carousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+
+        </div></div>
+            
+        </div>
+    </div>
+</header>
+
+
+<br>
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-body"><img src="{% static 'images/Amanda.jpg' %}" class="img-responsive" width="70%" height="70%" alt="Image"></div>
+        <div class="panel-footer"></div>
+        <div class="panel-footer">Ph.D. Candidate in Animal Science</div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+            <h3 class="mt-4 text-maroon">Amanda Mathias</h3>
+            <p class="text-justify"><b>Biography:</b> My name is Amanda Mathias and I am from Inola, Oklahoma. I graduated from Oklahoma State University with my Bachelors of Science in Animal Science in May of 2014. I went on to Louisiana State University, where I completed my Master of Science in Animal Science in May of 2017. My research at LSU evaluated the effect the timing of lidocaine administration before calves at dehorning on cortisol, substance p, and adrenocorticotropic hormone (ACTH). I am currently working on my Ph.D. in Animal Science with an emphasis on Animal Behavior and Welfare. My research is focusing on two different areas: (1) quantifying stress and anxiety in cattle using a battery of fear tests and (2) quantifying the impact of commingling on beef cattle welfare.</p>
+            <p class="text-justify"><b>Project Title:</b> Quantifying Stress and Anxiety in Cattle</p>
+            <p class="text-justify"><b>Project Description:</b> Multiple tests are required to objectively evaluate the different components of emotion, specifically fear. Steers were subjected to a battery of six fear tests: startle test, open field test, bovine zero maze, pen scores, exit velocities, and chute scores.  Identifying relationships among different production-relevant emotional systems will streamline behavioral evaluations in animals, enhance our understanding of animal welfare, and may reduce the number of tests required to quantify cattle emotion.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel panel-primary">
+        <p class="text-justify"><b>Project Title:</b> Quantifying the impact of commingling on sub-tropically adapted cattle welfare</p>
+        <p class="text-justify"><b>Project Description:</b>There is a dearth of empirical evidence regarding the impact of commingling on cattle health and welfare, and inexperience with commingling may be detrimental to cattle welfare. Enhancing the social responsibility and acceptability of beef production requires a comprehensive understanding of how animal management impacts animal welfare. Empirically investigating the impacts of commingling will facilitate the determination of optimal management practices that consider the actual costs and consequences of transitioning through the different sectors of the beef industry. This research will be used to quantify the impact of commingling and repeated commingling on productivity, health, efficiency, behavior, and stress of tropically adapted beef calves. Utilizing the extensive and industry relevant herds at the McGregor Research Center, we will be able evaluating the impact of commingling stress independent of weaning and transportation stress.</p>
+        <p class="text-justify"><a href="/peoples/">Back To Peoples</a></p>
+    </div>
+  </div>
+</div><br><br>
+
+<!-- /.container -->
+
+{% endblock %}

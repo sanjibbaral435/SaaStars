@@ -24,9 +24,6 @@ def about_us(request):
 def peoples(request):
 	return render(request, 'peoples.html')
 
-def articles(request):
-	return render(request, 'articles.html')
-	
 def projects(request):
 	projects_title_list = ProjectsData.objects.order_by('project_title')
 	context = {'projects_title_list':projects_title_list}
@@ -39,3 +36,12 @@ def articles(request):
 
 def contact_us(request):
 	return render(request, 'contact_us.html')
+
+def peoples_amanda(request):
+	return render(request, 'peoples_amanda.html')
+
+def peoples_emily(request):
+	return render(request, 'peoples_emily.html')
+
+def peoples_rachel(request):
+	return render(request, 'peoples_rachel.html')

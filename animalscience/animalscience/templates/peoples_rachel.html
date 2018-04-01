@@ -1,0 +1,72 @@
+{% extends login_status|yesno:"logged_in.html,not_logged_in.html" %}
+
+
+{% block content %}
+
+{% load staticfiles %}
+<!-- Header with Background Image -->
+<header class="business-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-auto"><div id="phage-carousel" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#phage-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#phage-carousel" data-slide-to="1"></li>
+                <li data-target="#phage-carousel" data-slide-to="2"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/slider_1.jpg' %}" alt="Phage 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/slider_2.jpg' %}" alt="Phage 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/slider_3.jpg' %}" alt="Phage 3">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#phage-carousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#phage-carousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+
+        </div></div>
+            
+        </div>
+    </div>
+</header>
+
+
+<br>
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-body"><img src="{% static 'images/Rachel.jpg' %}" class="img-responsive" width="70%" height="70%" alt="Image"></div>
+        <div class="panel-footer"></div>
+        <div class="panel-footer">Graduate Student in Animal Science</div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+            <h3 class="mt-4 text-maroon">Rachel Park</h3>
+            <p class="text-justify"><b>Biography:</b>Howdy! My name is Rachel Park. I am from Rootstown, Ohio. In Spring of 2017, I graduated with my Bachelor of Science from The Ohio State University! My previous research endeavors focused on animal welfare and behavior relative to several different species including poultry, sheep, dairy cattle and swine. During my time at Ohio State, I was afforded the opportunity to investigate the effects of pain mitigation during piglet castration. Currently, I am a graduate student under Dr. Daigle studying animal welfare with an emphasis on beef cattle. My research is focused on evaluating the impact of environmental enrichment on feedyard steers relative to their health, productivity and behavior.</p>
+            <p class="text-justify"><b>Project Title:</b> Impact of Environmental Enrichment on Feedlot Steers</p>
+            <p class="text-justify"><b>Project Description:</b> This research will examine the effects of implementing environmental enrichment into a feedyard setting with beef steers. The environmental enrichment is in the form of a cattle brush designed to allow cattle to groom themselves at their own will. The time budget of these animals as well as their health status, efficiency and carcass traits will be evaluated.</p>
+            <p class="text-justify"><a href="/peoples/">Back To Peoples</a></p>
+    </div>
+  </div>
+</div><br><br>
+
+<!-- /.container -->
+
+{% endblock %}
