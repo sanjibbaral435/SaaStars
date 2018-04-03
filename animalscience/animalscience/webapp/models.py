@@ -1,5 +1,79 @@
 from django.db import models
+import uuid
+    
+class author_entity(models.Model):
+    """
+    Model representing an author.
+    """
+    author_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    first_name = models.CharField(max_length=100, default='none')
+    last_name = models.CharField(max_length=100, default='none')
 
+    class Meta:
+        ordering = ["last_name","first_name"]
+    
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular author instance.
+        """
+        return reverse('author-detail', args=[str(self.author_id)])
+    
+    
+    def __str__(self):
+        """
+        String for representing the Model object.
+        """
+        return '{0}, {1}'.format(self.last_name,self.first_name)
+
+class key_entity(models.Model):
+    key_id = models.UUIDField(primary_key=True,default=uuid.uuid4)
+    keyword = models.CharField(max_length=100, default="")
+    
+    def __str__(self):
+        """
+        String for representing the Model object.
+        """
+        return self.keyword
+        
+    
+class article_entity(models.Model):
+    # article_id = models.AutoField(primary_key=True)
+    article_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    article_title = models.CharField(max_length=100, default=None)
+    article_year = models.CharField(max_length=4, default=None)
+    # hyperlink to article pdf hosted on faculty server
+    # article_url = models.CharField(max_length=100, default=None)
+    # author_fk = models.ForeignKey('author_entity', on_delete=models.CASCADE, default=None)
+    # key_fk = models.ForeignKey('key_entity', on_delete=models.CASCADE, default=None)
+    authors = models.ManyToManyField('author_entity', default=None)
+    keywords = models.ManyToManyField(key_entity, default=None)
+    
+    # class Meta:
+    #     ordering = [""]
+    
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular author instance.
+        """
+        return reverse('article_entity', args=[str(self.article_id)])
+    
+    
+    def __str__(self):
+        """
+        String for representing the Model object.
+        """
+        return self.article_title
+    
+# class article_author_rel (models.Model):
+#     article_id_fk = models.ForeignKey(article_entity, on_delete=models.CASCADE, null=True)
+#     author_id_fk = models.ForeignKey(author_entity, on_delete=models.CASCADE, null=True)
+    
+# class article_key_rel(models.Model):
+#     article_id_fk = models.ForeignKey(article_entity, on_delete=models.CASCADE, null=True)
+#     key_id_fk = models.ForeignKey(key_entity, on_delete=models.CASCADE, null=True)
+    
+    
+    
 class researchdata(models.Model):
     article_id = models.IntegerField()
     article_title = models.CharField(max_length=30, default='none')
@@ -18,27 +92,3 @@ class ProjectsData(models.Model):
     def __str__(self):              # __unicode__ on Python 2
         return self.project_title
 
-class Author(models.Model):
-    """
-    Model representing an author.
-    """
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    date_of_birth = models.DateField(null=True, blank=True)
-    date_of_death = models.DateField('Died', null=True, blank=True)
-
-    class Meta:
-        ordering = ["last_name","first_name"]
-    
-    def get_absolute_url(self):
-        """
-        Returns the url to access a particular author instance.
-        """
-        return reverse('author-detail', args=[str(self.id)])
-    
-
-    def __str__(self):
-        """
-        String for representing the Model object.
-        """
-        return '{0}, {1}'.format(self.last_name,self.first_name)

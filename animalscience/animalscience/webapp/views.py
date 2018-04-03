@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from animalscience.webapp.models import ProjectsData
-from animalscience.webapp.models import researchdata
+from animalscience.webapp.models import researchdata, author_entity
 # Create your views here.
 
 def index(request):
@@ -30,6 +30,7 @@ def projects(request):
 	return render(request, 'projects.html', context)
 	
 def articles(request):
+	# articles_title_list = author_entity.objects.values_list('last_name').filter(last_name="a")
 	articles_title_list = researchdata.objects.order_by('article_title')
 	context = {'articles_title_list':articles_title_list}
 	return render(request, 'articles.html', context)
