@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from animalscience.webapp.models import ProjectsData
 from animalscience.webapp.models import researchdata, author_entity
+from .forms import PostForm
 # Create your views here.
 
 def index(request):
@@ -27,7 +28,18 @@ def peoples(request):
 def projects(request):
 	projects_title_list = ProjectsData.objects.order_by('project_title')
 	context = {'projects_title_list':projects_title_list}
-	return render(request, 'projects.html', context)
+	#form = PostForm()
+	
+	form = PostForm(request.POST)
+	if form.is_valid():
+	    post = form.save(commit=False)
+	    #post.title = request.title
+	    #post.text = request.text
+	    print(form)
+	    #post.save()
+	    #return redirect('post_detail', pk=post.pk)
+	    
+	return render(request, 'projects.html', {'form': form}, context)
 	
 def articles(request):
 	# articles_title_list = author_entity.objects.values_list('last_name').filter(last_name="a")
