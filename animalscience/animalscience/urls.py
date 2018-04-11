@@ -39,9 +39,7 @@ from django.views.generic import RedirectView
 urlpatterns = [
     #path('', views.index, name='index'),
     url(r'^$', views.index, name='index'),
-    url(r'^view_phages/$', views.view_phages, name='view_phages'),
-    url(r'^search_phage/$', views.search_phage, name='search_phage'),
-    url(r'^about_us/', views.about_us, name='about_us'),
+    url(r'^research/', views.research, name='research'),
     url(r'^peoples/', views.peoples, name='peoples'),
     url(r'^projects/', views.projects, name='projects'),
     url(r'^articles/', views.articles, name='articles'),
@@ -49,7 +47,6 @@ urlpatterns = [
     url(r'^peoples_amanda/', views.peoples_amanda, name='peoples_amanda'),
     url(r'^peoples_rachel/', views.peoples_rachel, name='peoples_rachel'),
     url(r'^peoples_emily/', views.peoples_emily, name='peoples_emily'),
-    url(r'^search_phage/$', views.search_phage, name='search_phage'),
     url(r'^admin/',admin.site.urls),
 ]
 

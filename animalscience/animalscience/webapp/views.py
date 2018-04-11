@@ -11,16 +11,8 @@ def index(request):
     """
     return render(request,'index.html')
 
-
-def view_phages(request):
-
-	return render(request,'view_phages.html')
-
-def search_phage(request):
-	return render(request,'search_phage.html')
-
-def about_us(request):
-	return render(request, 'about_us.html')
+def research(request):
+	return render(request, 'research.html')
 
 def peoples(request):
 	return render(request, 'peoples.html')
