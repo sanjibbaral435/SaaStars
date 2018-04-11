@@ -93,5 +93,6 @@ class ProjectsData(models.Model):
         return self.project_title
 
 class Post(models.Model):
-    title = models.CharField(max_length=30, default='none')
-    text = models.CharField(max_length=30, default='none')
+    project_title = models.CharField(max_length=30, default='none')
+    author = models.CharField(max_length=30, default='none')
+    description = models.CharField(max_length=30, default='none')
