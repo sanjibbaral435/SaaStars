@@ -1,0 +1,154 @@
+{% extends login_status|yesno:"logged_in.html,not_logged_in.html" %}
+
+
+{% block content %}
+
+{% load staticfiles %}
+<!-- Header with Background Image -->
+<header class="business-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-auto"><div id="phage-carousel" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#phage-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#phage-carousel" data-slide-to="1"></li>
+                <li data-target="#phage-carousel" data-slide-to="2"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/slider_1.jpg' %}" alt="Phage 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/slider_2.jpg' %}" alt="Phage 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/slider_3.jpg' %}" alt="Phage 3">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#phage-carousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#phage-carousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+
+        </div></div>
+            
+        </div>
+    </div>
+</header>
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-8">
+            <br><br>
+            <h5 class="mt-4 text-maroon">Behavior & Management of Domestic Species (ANSC 404)</h5>
+
+            <p class="text-justify"><b>Syllabus:</b> <a href="{% static 'docs/Animal Science 310 Syllabus_Daigle_SS18.pdf' %}" target="_blank"> Click Here:</a><p>
+
+            <p class="text-justify"><b>Description:</b> Application of behavior of cattle, horses, sheep, goats and swine to their management; basic principles, physiology of behavior, perception, training, predators, use of dogs in livestock production, stress and animal welfare.<p>
+            
+            <p class="text-justify"><b>Course Emphases:</b></p>
+            <ul>
+                <li>Animal handling techniques and skill development</li>
+                <li>Fundamentals of animal welfare</li>
+                <li>Fundamentals of bioethics</li>
+                <li>Scientific method and independent research</li>
+                <li>Scientific writing and communication</li>
+            </ul>
+            <p class="text-justify"><b>Previous independent research projects:</b><a href="/projects/" target="_blank"> Click Here:</a></p>
+            <p class="text-justify"><b>Animal behavior & welfare article database:</b><a href="/articles/" target="_blank"> Click Here:</a></p>
+            
+            
+            <br><br><br>
+            
+            
+            
+            
+            <h5 class="mt-4 text-maroon">Bioethics & Animal Welfare (graduate level)</h5>
+            <p class="text-justify"><b>Syllabus:</b> <a href="{% static 'docs/ANSC 698 Special Topics_Daigle_Syllabus_FS18.pdf' %}" target="_blank"> Click Here:</a><p>
+
+            <p class="text-justify"><b>Description:</b>Ethics are an integral component of animal agriculture and management.  The purpose of this course is to provide students with a foundation for making ethical choices within their specific discipline and to gain an understanding about how these choices can impact animal welfare and policy.<p>
+        
+            <br><br><br>
+            <h5 class="mt-4 text-maroon">Canine socialization and training (cooperation with Comparative Medicine Program)</h5>
+
+            <p class="text-justify"><b>Syllabus:</b> <a href="{% static 'docs/Canine socialization and training syllabus 1.4.18.pdf' %}" target="_blank"> Click Here:</a><p>
+            
+        </div>
+        <!--<div class="col-sm-1"></div>-->
+        <div class="col-sm-4">
+            <div class="my-5">
+                <div class="news_box">
+                    <div class="news_content"> <b>
+                        <p class="text-maroon">[#Side Menu Items]</p>
+                    </b>
+                        <hr color="#800000" size="10">
+                    </div>
+                    <div style="width:325px;height:250px;line-height:2em;overflow-y:scroll;padding:5px;">
+                        <div class="news_content">
+                            <div class="description">
+                                <h6> <b>
+                                    <li><a href="#">Menu Item 1</a>
+                                        <img src="{% static 'images/new3.gif' %}" alt="Demo image"  class="img-rounded img-responsive" />
+                                    </li>
+                                </b>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="news_content">
+                            <div class="description">
+                                <h6> <b>
+                                    <li><a href="#">Menu Item 2</a>
+                                    </li>
+                                </b>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="news_content">
+                            <div class="description">
+                                <h6> <b>
+                                    <li><a href="#">Menu Item 3</a>
+                                    </li>
+                                </b>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="news_content">
+                            <div class="description">
+                                <h6> <b>
+                                    <li><a href="#">Menu Item 4</a>
+                                    </li>
+                                </b>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="news_content">
+                            <div class="description">
+                                <h6> <b>
+                                    <li><a href="#">Menu Item 5</a>
+                                    </li>
+                                </b>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<br>
+<br>
+<!-- /.container -->
+
+{% endblock %}

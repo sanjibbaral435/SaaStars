@@ -2,11 +2,13 @@
 
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.16/datatables.min.css"/>
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.16/datatables.min.js"></script>
-
 
 {% load staticfiles %}
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
 <!-- Header with Background Image -->
 <header class="business-header">
     <div class="container">
@@ -46,31 +48,507 @@
         </div>
     </div>
 </header>
+<br>
+<!-- Page Content -->
 <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                      <h1>New post</h1>
-                      <form method="POST" class="post-form">{% csrf_token %}
-                          {{ form.as_p }}
-                          <button type="submit" class="save btn btn-default">Save</button>
-                      </form>
+    
+    <div class="row" align="center">
+        <h5 class="mt-4 text-maroon">List of Previous Independent Research Projects</h5>
+        <br><br>
+        <table border=0 cellpadding=0 cellspacing=0>
+            <col width=180>
+             <col width=184>
+             <col width=122>
+             <col width=695>
+             <tr height=19 style='height:14.4pt'>
+              <td><b>Year, Semester</b></td>
+              <td><b>Student</b></td>
+              <td><b>Species</b></td>
+              <td><b>Title</b></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td >Roberts, Katarina</td>
+              <td >Bird</td>
+              <td >Activity in
+              Cacatua alba (Umbrella Cockatoo)</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td >Verrett, Taylor</td>
+              <td >Bird</td>
+              <td >Con- and allospecific response to mouring dove wing-whistles</td>
+             </tr>
+            
+              <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Carroll, C.
+              Hope<span style='mso-spacerun:yes'> </span></td>
+              <td>Bird</td>
+              <td>Social hierarchy
+              dynamics in pigeons<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Blank, Taylor</td>
+              <td>Cat</td>
+              <td>Does age affect
+              a feline's ability to learn and<br>
+                <span style='mso-spacerun:yes'> </span>be trained?<span
+              style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Wenner, Taylor</td>
+              <td>Cat</td>
+              <td>Behavior of
+              domestic cats in relation to<br>
+                <span style='mso-spacerun:yes'> </span>environmental history</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Talbot,
+              Taylor<span style='mso-spacerun:yes'> </span></td>
+              <td>Cat</td>
+              <td>Cat behavior in
+              response to type and time of feed<br>
+                in new environment</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Kemp,
+              Shelby<span style='mso-spacerun:yes'> </span></td>
+              <td>Cat</td>
+              <td>The observation
+              of domestic house cat reactions <br>
+                due to stressful stimulations<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Cooper, Channing</td>
+              <td>Cat</td>
+              <td>Canine influence
+              on feline agression<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Hamlett, Jenna</td>
+              <td>Cat</td>
+              <td>Effects of
+              compression on aggressive behavior in cats during veterinary examinations</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Heine, Macy</td>
+              <td>Cat</td>
+              <td>Feedsing
+              behaviors of feline based on different food presentation</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Stanford,
+              Marissa</td>
+              <td>Cat</td>
+              <td>Cat agression
+              between both sexes<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Wilgus, Amanda</td>
+              <td>Cat</td>
+              <td>Cat preference:
+              cardboard boxes or bags?<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Vaan Ray, Emily</td>
+              <td>Cattle</td>
+              <td>Temperment and
+              flight speed in relation to feed <br>
+                latency in mixed breed beef steers</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Castleman,
+              Sarah<span style='mso-spacerun:yes'> </span></td>
+              <td>Cattle</td>
+              <td>Rumination
+              Behavior in Cattle<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Bransford,
+              Brandon<span style='mso-spacerun:yes'> </span></td>
+              <td>Cattle</td>
+              <td>Cattle feed
+              perferences<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Campbell,
+              Caroline<span style='mso-spacerun:yes'> </span></td>
+              <td>Cattle</td>
+              <td>Cattle feeding
+              agression in relation to proximity<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Hernandez,
+              Victor</td>
+              <td>Cattle</td>
+              <td>Cattle eatting
+              time with and without human presence<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Payblas, Elena</td>
+              <td>Cattle</td>
+              <td>Agression in
+              Longhorns as a Result of Cow-calf pairs</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Sustaita,
+              Jessica</td>
+              <td>Cattle</td>
+              <td>Response of
+              cattle to a forced approach test in an open pasture<span
+              style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Barnes,
+              Rachel<span style='mso-spacerun:yes'> </span></td>
+              <td>Dog</td>
+              <td>Seperation
+              anxiety in dogs</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Poland,
+              Nicole<span style='mso-spacerun:yes'> </span></td>
+              <td>Dog</td>
+              <td>Dog territory
+              and socialization</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Madrid,
+              Alyssa<span style='mso-spacerun:yes'> </span></td>
+              <td>Dog</td>
+              <td>Dog agression
+              while eating and drinking</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Bellamy, Nikki</td>
+              <td>Dog</td>
+              <td>How feeding
+              times affect dog behavior<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Gutierrez,
+              Jessi<span style='mso-spacerun:yes'> </span></td>
+              <td>Dog</td>
+              <td>The effect of
+              exercise on you and your animal</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Mansfield,
+              Kathryn<span style='mso-spacerun:yes'> </span></td>
+              <td>Dog</td>
+              <td>Clicker training
+              for dogs<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Adams, Q.
+              H.<span style='mso-spacerun:yes'> </span></td>
+              <td>Dog</td>
+              <td>Spiking
+              retrievers instincts<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Cavazos, Jessica</td>
+              <td>Dog</td>
+              <td>Panting
+              behavior<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Cifuentes,
+              Shannon</td>
+              <td>Dog</td>
+              <td>Dog aggression
+              tied to their socialization period<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Giglotti, Haven</td>
+              <td>Dog</td>
+              <td>Analysis of
+              canine kennel behavior<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Lopez, Triniti</td>
+              <td>Dog</td>
+              <td>Stressor
+              behaviors: occurances vs. corrections</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Solis, Jeremy</td>
+              <td>Dog</td>
+              <td>Paw preference
+              in dogs<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Statham, Breelan</td>
+              <td>Dog</td>
+              <td>Canine behaviors
+              at veterinary visits<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Worley, Kendall</td>
+              <td>Dog</td>
+              <td>Service dog
+              temperment across varying breeds<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Ham, Brooke</td>
+              <td>Dog<span
+              style='mso-spacerun:yes'> </span></td>
+              <td>Play behavior in
+              geriatric canines</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Moon, Lauren</td>
+              <td>Dogs</td>
+              <td>Temperment in
+              shelter dogs and the time it takes for them to get adopted</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Williams,
+              K.J.<span style='mso-spacerun:yes'> </span></td>
+              <td>Dogs</td>
+              <td>Factors that
+              affect dogs to display signs of agression</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Bambacigno,
+              Sarah<span style='mso-spacerun:yes'> </span></td>
+              <td>Duck</td>
+              <td><span
+              style='mso-spacerun:yes'> </span>How hardness of feed affects consumption in
+              <br>
+                ducks<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Cates, Kayla</td>
+              <td>Giraffes</td>
+              <td>Impact of guest
+              feeding programs on the frequency of abnormal oral behaviors in giraffes</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Winkler,
+              Samantha<span style='mso-spacerun:yes'> </span></td>
+              <td>Goat</td>
+              <td>Observations of
+              agnostic behaviors in Boer goat <br>
+                mothers penned with bucks</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Avildsen,
+              Rachel<span style='mso-spacerun:yes'> </span></td>
+              <td>Guinea Pig</td>
+              <td>Stress and
+              depression in Guinea Pigs</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Rodriguez,
+              Iliana</td>
+              <td>Hedgehog</td>
+              <td>Hedgehog
+              behavior correlating with its environment</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Vinson,
+              Brittany<span style='mso-spacerun:yes'> </span></td>
+              <td>Horse</td>
+              <td>Horse behavior
+              in turnout<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Flieller, John
+              Spencer<span style='mso-spacerun:yes'> </span></td>
+              <td>Horse</td>
+              <td>Rate of feed
+              consumption relative to proximity of herd and innate hearding behavior of
+              horses<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Wilhite, Kaila</td>
+              <td>Horse</td>
+              <td>Effects of
+              equestrian acupuncture<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Paranzino,
+              Nikki<span style='mso-spacerun:yes'> </span></td>
+              <td>Human</td>
+              <td>Texting versus
+              conversing in a college setting</td>
+             </tr>
+             <tr height=38 style='height:28.8pt'>
+              <td height=38 class=xl6520096 style='height:28.8pt;border-top:none'>Fall 2016</td>
+              <td>Sager, Brennan</td>
+              <td>Human</td>
+              <td class=xl6320096 width=795 style='border-top:none;border-left:none;
+              width:596pt'>The positive effect of owning an Autism Service <br>
+                dog on a Family with an Autism Spectrum Disorder Child: Qualities displayed
+              by the service dog being of high importance<span
+              style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Armand, Kelsey</td>
+              <td>Ostrich</td>
+              <td>Aggressive
+              behavior in relation to housing situation</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Sanchez, Jessica</td>
+              <td>Penguin</td>
+              <td>Changes in
+              Penguine Behavior durring feeding<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>McAndrew,
+              Megan<span style='mso-spacerun:yes'> </span></td>
+              <td>Sheep</td>
+              <td>Feed preference
+              in sheep: &quot;Alfalfa vs. X&quot;</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Key, Sierra</td>
+              <td>Sheep</td>
+              <td>Comparrison of
+              maternal behavior of hampshire ewes when seperated from lamb at different
+              postpartum stages<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Larsen, Amy</td>
+              <td>Sheep</td>
+              <td>The influence of
+              lamb age on ewe-lamb bond<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Nachtmann,
+              Ashleigh</td>
+              <td>Sheep</td>
+              <td>Affect of human
+              interaction on maternal instinct in sheep<span
+              style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Saenz, Lisa</td>
+              <td>Sheep</td>
+              <td>Protectiveness
+              of ewe lamb relationship with decrease in age<span
+              style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Fuentes,
+              Estrella<span style='mso-spacerun:yes'> </span></td>
+              <td>Squirrel</td>
+              <td>Sciurus griseus
+              flight zones and comfort levels<span style='mso-spacerun:yes'> </span></td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Fall 2016</td>
+              <td>Luskey,
+              Logan<span style='mso-spacerun:yes'> </span></td>
+              <td>Squirrel</td>
+              <td>Behavior of Fox
+              Squirrels toward humans in high<br>
+                <span style='mso-spacerun:yes'> </span>interaction areas</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Ramos, Adam</td>
+              <td>Squirrel</td>
+              <td>Frequency of
+              Degrees of caution among campus squirrels in response to human interaction</td>
+             </tr>
+             <tr height=19 style='height:14.4pt'>
+              <td >Spring
+              2017</td>
+              <td>Reed, Michael</td>
+              <td>Squirrel</td>
+              <td>Squirrel
+              foraging and anti-predator behavior<span style='mso-spacerun:yes'> </span></td>
+             </tr>
 
-                </div>
-            </div>
-        </div>
-  <h2> All Projects</h2>
-  <div class="project_list">
-    {% if projects_title_list %}
-        <ul>
-        {% for project in projects_title_list %}
-            <li><a href="#">{{ project.project_title }}</a></li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No Projects.</p>
-    {% endif %}
-  </div>
+            
+        </table>
+    </div>
+    <!-- /.row -->
 </div>
-</body>
-{% endblock %}
+<br>
+<br>
+<!-- /.container -->
 
+{% endblock %}

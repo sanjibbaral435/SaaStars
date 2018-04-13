@@ -17,6 +17,12 @@ def research(request):
 def peoples(request):
 	return render(request, 'peoples.html')
 
+def courses(request):
+	return render(request, 'courses.html')
+	
+def get_involved(request):
+	return render(request, 'get_involved.html')
+	
 def projects(request):
 	projects_title_list = ProjectsData.objects.order_by('project_title')
 	context = {'projects_title_list':projects_title_list}

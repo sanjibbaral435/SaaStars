@@ -1,0 +1,182 @@
+{% extends login_status|yesno:"logged_in.html,not_logged_in.html" %}
+
+
+{% block content %}
+
+{% load staticfiles %}
+<!-- Header with Background Image -->
+<header class="business-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-auto"><div id="phage-carousel" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#phage-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#phage-carousel" data-slide-to="1"></li>
+                <li data-target="#phage-carousel" data-slide-to="2"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/slider_1.jpg' %}" alt="Phage 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/slider_2.jpg' %}" alt="Phage 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/slider_3.jpg' %}" alt="Phage 3">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#phage-carousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#phage-carousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+
+        </div></div>
+            
+        </div>
+    </div>
+</header>
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-8">
+            <br><br>
+            <h5 class="mt-4 text-maroon">Behavior & Management of Domestic Species (ANSC 404)</h5>
+
+            <p class="text-justify" class="mt-4 text-maroon">Syllabus:<p>
+
+            <h5 class="mt-4 text-maroon">Feedyard employee attitude survey</h5>
+            <ul>
+                <li>Stockperson perception and attitude is a predictor of stockperson behavior. Stockperson behavior has a direct impact of animal productivity and welfare.</li>
+            </ul>
+            
+            <h5 class="mt-4 text-maroon">Fear test and emotional evaluations in cattle</h5>
+            <ul>
+                <li><b>Pilot:</b> Preliminary evaluation of cattle behavior in novel test to quantify anxiety in cattle</li>
+                <li><b>Study 1:</b> Comprehensive evaluation of cattle behavior in multiple fear tests</li>
+                <li><b>Study 2:</b> Relationship between fear test behavior and latency for heart rate to return to baseline</li>
+            </ul>
+            
+            <h5 class="mt-4 text-maroon">Social mixing of beef cattle</h5>
+            <ul>
+                <li><b>Study 1:</b> Impact of rapid repeated mixing of replacement heifers on productivity, behavior, and rebreeding rates</li>
+                <li><b>Study 2:</b> Impact of repeated mixing of backgrounded steers on productivity, behavior, and health</li>
+                <li><b>Study 3:</b> Impact of a terminal sort on cattle aggression</li>
+            </ul>
+            
+            <h5 class="mt-4 text-maroon">Environmental enrichment</h5>
+            <ul>
+                <li>Interaction between environmental enrichment and roughage on cattle behavior, health, and productivity</li>
+            </ul>
+            
+            <h5 class="mt-4 text-maroon">Tongue rolling and acidosis</h5>
+            <ul>
+                <li> Can tongue rolling behavior be a behavioral indicator of sub-acute acidosis?</li>
+                <li><b>Study 1:</b>Evaluated from cattle fed different roughages</li>
+                <li><b>Study 2:</b>Evaluated from cattle experiencing a SARA challenge</li>
+                <li><b>Study 3:</b>Development of a model illustrating the relationship between tongue rolling, mastication, rumination, and rumen pH</li>
+            </ul>
+            
+            <h5 class="mt-4 text-maroon">Feedyard welfare metric library</h5>
+            <ul>
+                <li>Comprehensive evaluation of feedyard operations and how management impacts cattle welfare.</li>
+                <li>Spent 10 days working as a feedyard employee to gain context regarding what realistic expectations are for a practical on-farm feedyard assessment.</li>
+                <li>Developed library of metrics that can be used to objectively evaluate fed cattle welfare</li>
+            </ul>
+            
+            <h5 class="mt-4 text-maroon">Product testing for Aversion Technologies, Inc.</h5>
+            <ul>
+                <li>Evaluate the efficacy of different plastic additives on wire damage from rodent chewing</li>
+                <li><b>Study 1:</b>Ford/Coroplast wire harness test-2</li>
+                <li><b>Study 2:</b>Efficacy of R4R and R4R+ on wire chewing behavior of rats</li>
+                <li>Find out more about Aversion Technologies <a href="http://aversiontech.com/">Here</a></li>
+            </ul>
+            
+            <h5 class="mt-4 text-maroon">Exercise to enhance cattle welfare</h5>
+            <ul>
+                <li><b>Study 1:</b>Empirical evaluation of different exercise regimes on weanling cattle welfare</li>
+                <li><b>Study 2:</b>Empirical evaluation of different exercise regimes on high risk receiving cattle welfare</li>
+            </ul>
+            
+            <h5 class="mt-4 text-maroon">Social grooming behavior</h5>
+            <ul>
+                <li>Investigation into the usefulness of allogrooming behavior as a tool to detect sick cattle</li>
+            </ul>
+        </div>
+        <!--<div class="col-sm-1"></div>-->
+        <div class="col-sm-4">
+            <div class="my-5">
+                <div class="news_box">
+                    <div class="news_content"> <b>
+                        <p class="text-maroon">[#Side Menu Items]</p>
+                    </b>
+                        <hr color="#800000" size="10">
+                    </div>
+                    <div style="width:325px;height:250px;line-height:2em;overflow-y:scroll;padding:5px;">
+                        <div class="news_content">
+                            <div class="description">
+                                <h6> <b>
+                                    <li><a href="#">Menu Item 1</a>
+                                        <img src="{% static 'images/new3.gif' %}" alt="Demo image"  class="img-rounded img-responsive" />
+                                    </li>
+                                </b>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="news_content">
+                            <div class="description">
+                                <h6> <b>
+                                    <li><a href="#">Menu Item 2</a>
+                                    </li>
+                                </b>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="news_content">
+                            <div class="description">
+                                <h6> <b>
+                                    <li><a href="#">Menu Item 3</a>
+                                    </li>
+                                </b>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="news_content">
+                            <div class="description">
+                                <h6> <b>
+                                    <li><a href="#">Menu Item 4</a>
+                                    </li>
+                                </b>
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="news_content">
+                            <div class="description">
+                                <h6> <b>
+                                    <li><a href="#">Menu Item 5</a>
+                                    </li>
+                                </b>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<br>
+<br>
+<!-- /.container -->
+
+{% endblock %}
