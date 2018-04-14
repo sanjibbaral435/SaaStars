@@ -39,13 +39,10 @@ class key_entity(models.Model):
 class article_entity(models.Model):
     # article_id = models.AutoField(primary_key=True)
     article_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    article_title = models.CharField(max_length=100, default=None)
+    article_title = models.CharField(max_length=200, default=None)
     article_year = models.CharField(max_length=4, default=None)
-    # hyperlink to article pdf hosted on faculty server
-    # article_url = models.CharField(max_length=100, default=None)
-    # author_fk = models.ForeignKey('author_entity', on_delete=models.CASCADE, default=None)
-    # key_fk = models.ForeignKey('key_entity', on_delete=models.CASCADE, default=None)
-    authors = models.ManyToManyField('author_entity', default=None)
+
+    authors = models.ManyToManyField(author_entity, default=None)
     keywords = models.ManyToManyField(key_entity, default=None)
     
     # class Meta:
@@ -55,7 +52,7 @@ class article_entity(models.Model):
         """
         Returns the url to access a particular author instance.
         """
-        return reverse('article_entity', args=[str(self.article_id)])
+        return reverse('article_entity', args=[str(self.id)])
     
     
     def __str__(self):
@@ -63,6 +60,15 @@ class article_entity(models.Model):
         String for representing the Model object.
         """
         return self.article_title
+    def display_authors(self):
+        # Create a string of authors to display on admin
+        return ', '.join([ authors.last_name for authors in self.authors.all()[:3] ])
+        display_authors.short_description = 'Authors'
+
+    def display_keywords(self):
+        # Create astring of  keywords to dislay on admin
+        return ', '.join([ keywords.keyword for keywords in self.keywords.all()[:3] ])
+        display_keywords.short_description = 'Keywords'
     
 # class article_author_rel (models.Model):
 #     article_id_fk = models.ForeignKey(article_entity, on_delete=models.CASCADE, null=True)

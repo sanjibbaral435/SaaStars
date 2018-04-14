@@ -85,7 +85,8 @@
     {% if articles_title_list %}
         <ul>
         {% for article in articles_title_list %}
-            <li><a href="#">{{ article.article_title }}</a></li>
+            {% static "" as baseUrl %}
+            <li><a href="{{ baseUrl }}/docs/{{ article.article_title }}.pdf">{{ article.article_title }}</a></li>
         {% endfor %}
         </ul>
     {% else %}
