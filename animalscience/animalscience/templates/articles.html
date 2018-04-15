@@ -48,8 +48,10 @@
 </header>
 <div class="container">
   <h2>Search Articles</h2>
-  <form class="form-horizontal" action="#">
-    <div class="form-group">
+  <form class="form-horizontal" method="post" action="#">
+    {% csrf_token %}
+    {{form.as_p}}
+    <!--<div class="form-group">
       <label class="control-label col-sm-2" for="text">Article Title</label>
       <div class="col-sm-10">          
         <input type="text" class="form-control" id="title" placeholder="Article Title" name="title">
@@ -72,7 +74,7 @@
       <div class="col-sm-10">          
         <input type="text" class="form-control" id="pwd" placeholder="Keywords" name="pwd">
       </div>
-    </div>
+    </div>-->
     
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
