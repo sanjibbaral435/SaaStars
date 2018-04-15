@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from animalscience.webapp.models import ProjectsData
 from animalscience.webapp.models import researchdata, author_entity, article_entity
-from .forms import PostForm
+from animalscience.webapp.forms import PostForm
 # Create your views here.
 
 def index(request):
@@ -41,9 +41,26 @@ def projects(request):
 	
 def articles(request):
 	# articles_title_list = author_entity.objects.values_list('last_name').filter(last_name="a")
-	articles_title_list = article_entity.objects.order_by('article_title')
-	context = {'articles_title_list':articles_title_list}
-	return render(request, 'articles.html', context)
+	article_page = 'articles.html'
+	if request.method == 'POST':
+		form = PostForm(request.POST)
+		if form.is_valid():
+			title = form.cleaned_data['title']
+			year = form.cleaned_data['year']
+			author = form.cleaned_data['author']
+			keyword = form.cleaned_data['keyword']
+			print(title, year, author, keyword)
+			articles_title_list = article_entity.objects.filter(article_title__icontains=title)
+			articles_years_list = article_entity.objects.filter(article_year=year)
+			articles_title_list.union(articles_years_list)
+			print(articles_title_list)
+			context = {'articles_title_list':articles_title_list}
+			return render(request, article_page, {'form':form}, context)
+	else:
+		form = PostForm();
+		return render(request, article_page,{'form':form})
+	
+	
 
 def contact_us(request):
 	return render(request, 'contact_us.html')
@@ -56,3 +73,4 @@ def peoples_emily(request):
 
 def peoples_rachel(request):
 	return render(request, 'peoples_rachel.html')
+	
