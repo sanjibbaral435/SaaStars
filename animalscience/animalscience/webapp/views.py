@@ -50,8 +50,8 @@ def articles(request):
 			keyword = form.cleaned_data['keyword']
 			print(title, year, author, keyword)
 			articles_title_list = article_entity.objects.filter(article_title__icontains=title)
-			articles_years_list = article_entity.objects.filter(article_year=year)
-			articles_title_list.union(articles_years_list)
+			articles_title_list = articles_title_list.filter(article_year=year)
+			#articles_title_list.union(articles_years_list)
 			print(articles_title_list)
 			context = {'articles_title_list':articles_title_list,'form':form}
 			return render(request, article_page, context)
