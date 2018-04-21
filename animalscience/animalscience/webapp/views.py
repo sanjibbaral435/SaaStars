@@ -40,7 +40,6 @@ def projects(request):
 	return render(request, 'projects.html', {'form': form}, context)
 	
 def articles(request):
-	# articles_title_list = author_entity.objects.values_list('last_name').filter(last_name="a")
 	article_page = 'articles.html'
 	if request.method == 'POST':
 		form = PostForm(request.POST)
@@ -54,12 +53,14 @@ def articles(request):
 			articles_years_list = article_entity.objects.filter(article_year=year)
 			articles_title_list.union(articles_years_list)
 			print(articles_title_list)
-			context = {'articles_title_list':articles_title_list}
-			return render(request, article_page, {'form':form}, context)
-	else:
+			context = {'articles_title_list':articles_title_list,'form':form}
+			return render(request, article_page, context)
+	elif request.method == 'GET':
 		form = PostForm();
-		return render(request, article_page,{'form':form})
-	
+		articles_title_list = article_entity.objects.order_by('article_title')
+		print(articles_title_list)
+		context = {'articles_title_list':articles_title_list,'form':form}
+		return render(request, article_page,context)
 	
 
 def contact_us(request):
