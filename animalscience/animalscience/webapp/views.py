@@ -61,7 +61,9 @@ def articles(request):
 				author_list= author_entity.objects.annotate(name = Concat('first_name',V(' '),'last_name')).filter(name__icontains=author)
 				articles_title_list = articles_title_list.filter(authors__in=author_list).distinct()
 			#print("author", articles_title_list)
-			
+			if keyword!="":
+				keyword_list= key_entity.objects.filter(keyword__icontains=keyword)
+				articles_title_list = articles_title_list.filter(keywords__in=keyword_list).distinct()
 			#print("keyword", articles_title_list)
 			context = {'articles_title_list':articles_title_list,'form':form}
 			return render(request, article_page, context)
