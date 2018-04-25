@@ -5,6 +5,8 @@ from animalscience.webapp.models import researchdata, author_entity, article_ent
 from animalscience.webapp.forms import PostForm
 from django.db.models import Value as V
 from django.db.models.functions import Concat
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate, logout
 # Create your views here.
 
 def index(request):
@@ -83,3 +85,33 @@ def peoples_emily(request):
 
 def peoples_rachel(request):
 	return render(request, 'peoples_rachel.html')
+
+def login(request):
+    msg = dict()
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        print (form.errors)
+        username = request.POST['username']
+        password = request.POST['password']
+        if form.is_valid():
+            msg['form_is_valid'] = True
+        else:
+            form.add_error('password', 'Please enter a correct username and password. Note that both fields are case-sensitive.')
+            msg['form_is_valid'] = False
+
+        if username and password:
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    msg['form_is_valid'] = True
+                else:
+                    msg['form_is_valid'] = False
+    else:
+        form = AuthenticationForm()
+    context = {'form': form}
+    msg['html_form'] = render_to_string('partial_login.html',
+                                         context,
+                                         request=request
+                                         )
+    return JsonResponse(msg)

@@ -14,3 +14,4 @@ class author_entityAdmin(admin.ModelAdmin):
 @admin.register(article_entity)
 class article_entityAdmin(admin.ModelAdmin):
 	list_display=('article_title','article_year','display_authors','display_keywords')
+	

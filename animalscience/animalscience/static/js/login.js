@@ -2,7 +2,7 @@ $(function () {
 
   $(".js-create-login").click(function () {
     $.ajax({
-      url: '/mylogin',
+      url: '/login',
       type: 'get',
       dataType: 'json',
       beforeSend: function () {
