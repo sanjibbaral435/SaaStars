@@ -49,6 +49,7 @@ urlpatterns = [
     url(r'^peoples_amanda/', views.peoples_amanda, name='peoples_amanda'),
     url(r'^peoples_rachel/', views.peoples_rachel, name='peoples_rachel'),
     url(r'^peoples_emily/', views.peoples_emily, name='peoples_emily'),
+    url(r'^awjt/', views.awjt, name='awjt'),
     url(r'^admin/',admin.site.urls, name ='admin'),
 ]
 

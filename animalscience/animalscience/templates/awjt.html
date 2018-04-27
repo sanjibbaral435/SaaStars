@@ -1,0 +1,75 @@
+{% extends login_status|yesno:"logged_in.html,not_logged_in.html" %}
+
+
+{% block content %}
+
+{% load staticfiles %}
+<!-- Header with Background Image -->
+<header class="business-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-auto"><div id="phage-carousel" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#phage-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#phage-carousel" data-slide-to="1"></li>
+                <li data-target="#phage-carousel" data-slide-to="2"></li>
+                <li data-target="#phage-carousel" data-slide-to="3"></li>
+                <li data-target="#phage-carousel" data-slide-to="4"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/Slider/slider_1.jpg' %}" alt="Phage 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/Slider/slider_2.jpg' %}" alt="Phage 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/Slider/slider_3.jpg' %}" alt="Phage 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/Slider/slider_4.jpg' %}" alt="Phage 4">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/Slider/slider_5.jpg' %}" alt="Phage 5">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#phage-carousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#phage-carousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+
+        </div></div>
+            
+        </div>
+    </div>
+</header>
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <br><br>
+      <div class="panel panel-primary">
+        <div class="panel-body"><img src="{% static 'images/awjtc2.jpg' %}" class="img-responsive" width="100%" height="100%" alt="Image"></div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <h3 class="mt-4 text-maroon">The Animal Welfare Judging Team</h3>
+      <p class="text-justify">The Animal Welfare Judging Team is a new opportunity for Texas A&M undergraduate students to engage in evaluating scenarios on the basis of animal welfare standards. In this competition, students will utilize science based methods and reasoning in order to evaluate the welfare of animals in a number of settings. This year, the contest will provide students the ability to assess the welfare of the following species: 1) Dairy Goats, 2) Egg Laying Ducks, 3) Green Iguanas and 4) Live Assessment - Horses. The students will be traveling to Colorado State University for the competition on November 16th through November 18th. Every year, the contest will choose to compete using different species and rotating location through institutions that participate.</p>
+      <p>Students interested in the Animal Welfare Judging Team should contact Rachel Park at park.1932@tamu.edu or 330-931-7526. At the current time, there is no required course that students should enroll in to participate in the competition. Team members will receive training by actively participating in meetings at least twice a week with their coach in addition to outside preparation deemed necessary.</p>
+      <p>This past November, the first Fighting Texas Aggie Animal Welfare Judging Team competed in the 17th Annual Intercollegiate Animal Welfare Judging and Assessment Contest at Iowa State University to receive 8th Overall. The team evaluated the following species: 1) Farmed Fish, 2) Meat Rabbits, 3) Racing Greyhounds and 4) Live Assessment – Finisher Pigs. Team members included Caroline Campbell, Logan Roper, Xandra Meneses and Amanda Wilgus.</p>
+    </div>
+  </div>
+</div><br><br>
+
+
+<!-- /.container -->
+
+{% endblock %}

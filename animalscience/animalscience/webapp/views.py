@@ -73,6 +73,9 @@ def peoples_emily(request):
 def peoples_rachel(request):
 	return render(request, 'peoples_rachel.html')
 
+def awjt(request):
+	return render(request, 'awjt.html')
+
 def login(request):
     msg = dict()
     if request.method == 'POST':
