@@ -28,21 +28,8 @@ def get_involved(request):
 	return render(request, 'get_involved.html')
 	
 def projects(request):
-	projects_title_list = ProjectsData.objects.order_by('project_title')
-	context = {'projects_title_list':projects_title_list}
-	#form = PostForm()
-	
-	form = PostForm(request.POST)
-	if form.is_valid():
-	    post = form.save(commit=False)
-	    #post.title = request.title
-	    #post.text = request.text
-	    print(form)
-	    #post.save()
-	    #return redirect('post_detail', pk=post.pk)
-	    
-	return render(request, 'projects.html', {'form': form}, context)
-	
+	return render(request, 'projects.html')	
+
 def articles(request):
 	article_page = 'articles.html'
 	if request.method == 'POST':

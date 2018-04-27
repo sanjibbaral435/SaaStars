@@ -49,7 +49,7 @@ urlpatterns = [
     url(r'^peoples_amanda/', views.peoples_amanda, name='peoples_amanda'),
     url(r'^peoples_rachel/', views.peoples_rachel, name='peoples_rachel'),
     url(r'^peoples_emily/', views.peoples_emily, name='peoples_emily'),
-    url(r'^login/',admin.site.urls, name ='login'),
+    url(r'^admin/',admin.site.urls, name ='admin'),
 ]
 
 # Use static() to add url mapping to serve static files during development (only)
