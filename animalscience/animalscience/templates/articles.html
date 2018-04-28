@@ -96,7 +96,7 @@
         <ul>
         {% for article in articles_title_list %}
             {% static "" as baseUrl %}
-            <li><a href="{{ baseUrl }}/docs/{{ article.filename }}.pdf">{{ article.article_title }}</a></li>
+            <li><a href="{{ article.link }}" >{{ article.article_title }}</a></li>
         {% endfor %}
         </ul>
     {% else %}

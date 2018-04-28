@@ -40,7 +40,8 @@ class article_entity(models.Model):
     # article_id = models.AutoField(primary_key=True)
     article_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     article_title = models.CharField(max_length=200, default=None)
-    filename = models.CharField(max_length=200, default=None)
+    # filename = models.CharField(max_length=200, default=None)
+    link = models.CharField(max_length=200, default=None)
     article_year = models.CharField(max_length=4, default=None)
 
     authors = models.ManyToManyField(author_entity, default=None)

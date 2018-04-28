@@ -49,7 +49,7 @@ def articles(request):
 			if keyword!="":
 				keyword_list= key_entity.objects.filter(keyword__icontains=keyword)
 				articles_title_list = articles_title_list.filter(keywords__in=keyword_list).distinct()
-			#articles_title_list.union(articles_years_list)
+			# articles_title_list.union(articles_years_list)
 			print(articles_title_list)
 			context = {'articles_title_list':articles_title_list,'form':form}
 			return render(request, article_page, context)
