@@ -9,6 +9,12 @@ from animalscience.webapp.models import author_entity
 from animalscience.webapp.models import key_entity
 from animalscience.webapp.models import article_entity
 
+from animalscience.webapp.forms import PostForm
+
+import animalscience.webapp.views
+from django.urls import reverse
+import sys
+
 # Create your tests here.
 class SimpleTest(TestCase):
     # def setUp(self):
@@ -204,3 +210,56 @@ class ArticleModelTest(TestCase):
         article = article_entity.objects.get(article_id=self.article_id)
         expected_object_name = '%s' % (article.article_title)
         self.assertEquals(expected_object_name, str(article))
+
+
+
+class PostFormTest(TestCase):
+
+    def test_renew_title_label(self):
+        form = PostForm()        
+        self.assertTrue(form.fields['title'].label == None or form.fields['title'].label == 'Article Title')
+
+    def test_renew_publication_label(self):
+        form = PostForm()
+        self.assertTrue(form.fields['year'].label == None or form.fields['year'].label == 'Year of Publication')
+
+    def test_renew_author_label(self):
+        form = PostForm()
+        self.assertTrue(form.fields['author'].label == None or form.fields['author'].label == 'Author Name')
+    
+    def test_renew_keyword_label(self):
+        form = PostForm()
+        self.assertTrue(form.fields['keyword'].label == None or form.fields['keyword'].label == 'Keywords')
+
+
+
+
+class ViewTests(TestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+        #Create 13 authors for pagination tests
+        number_of_articles = 13
+        for article_num in range(number_of_articles):
+            article_entity.objects.create(article_title = "burrow %s" % article_num, link="https://burrows.pdf %s" % article_num, article_year ="1992")
+            # article_entity.objects.create(first_name='Christian %s' % author_num, last_name = 'Surname %s' % author_num,)
+           
+    def test_view_url_exists_at_desired_location(self): 
+        resp = self.client.get('/articles/') 
+        self.assertEqual(resp.status_code, 200)  
+           
+    def test_view_url_accessible_by_name(self):
+        resp = self.client.get(reverse('articles'))
+        self.assertEqual(resp.status_code, 200)
+        
+    def test_view_uses_correct_template(self):
+        resp = self.client.get(reverse('articles'))
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, 'articles.html')
+
+    def test_lists_all_articles(self):
+        resp = self.client.get(reverse('articles'))
+        print ("dfjkajkjfdljfaljf", resp.context)
+        sys.stdout.flush()
+        self.assertEqual(resp.status_code, 200)
+        self.assertTrue( len(resp.context['articles_title_list']) == 13)

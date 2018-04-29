@@ -79,7 +79,7 @@ class article_entity(models.Model):
 #     def __str__(self):              # __unicode__ on Python 2
 #         return self.project_title
 
-class Post(models.Model):
-    project_title = models.CharField(max_length=30, default='none')
-    author = models.CharField(max_length=30, default='none')
-    description = models.CharField(max_length=30, default='none')
+# class Post(models.Model):
+#     project_title = models.CharField(max_length=30, default='none')
+#     author = models.CharField(max_length=30, default='none')
+#     description = models.CharField(max_length=30, default='none')
