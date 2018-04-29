@@ -116,26 +116,36 @@ def contact(request):
     else:
         form = contact_form(request.POST)
         if form.is_valid():
-            contact_name = "Name: " + form.cleaned_data['name']
-            contact_email = "Email: " + form.cleaned_data['email']
+            contact_name = form.cleaned_data['name']
+            contact_email = form.cleaned_data['email']
             contact_message = "Message: " + form.cleaned_data['message']
+            subject = form.cleaned_data['email_about']
+            
+            toaddr = getemail(subject)
             try:
-                toaddr = "xyz@tamu.edu"
-                fromaddr = "abc@gmail.com"
+                fromaddr = contact_name + contact_email
                 msg = MIMEMultipart()
                 msg['From'] = fromaddr
-                msg['To'] = toaddr
-                msg['Subject'] = "Python email"
-                body = contact_name + "\n" + contact_email + "\n\n\n" + contact_message
+                msg['To'] = ", ".join(toaddr)
+                msg['Subject'] = "Message From AWBL Website: " + subject
+                body = "Name: " + contact_name + "\n" + "Email: " + contact_email + "\n\n\n" + contact_message
                 msg.attach(MIMEText(body, 'plain'))
                 server = smtplib.SMTP('smtp.gmail.com', 587)
                 server.ehlo()
                 server.starttls()
                 server.ehlo()
-                server.login("sanjibbaral.nit", "")
+                server.login("", "")
                 text = msg.as_string()
                 server.sendmail(fromaddr, toaddr, text)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return render(request, "contact_us.html", {'form': form})
     return render(request, "contact_us.html", {'form': form})
+    
+def getemail(subject):
+    if subject == 'Undergraduate research' or subject == 'Graduate research' or subject == 'Other':
+    	return 'cdaigle@tamu.edu'
+    elif subject == 'Animal welfare club':
+    	return ['cdaigle@tamu.edu', 'menenses@tamu.edu']
+    else:
+    	return ['cdaigle@tamu.edu', 'rachelpark@tamu.edu']
