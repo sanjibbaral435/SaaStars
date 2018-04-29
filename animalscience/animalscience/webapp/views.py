@@ -2,10 +2,16 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from animalscience.webapp.models import author_entity, article_entity, key_entity
 from animalscience.webapp.forms import PostForm
+from animalscience.webapp.forms import contact_form
 from django.db.models import Value as V
 from django.db.models.functions import Concat
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
+from django.core.mail import send_mail, BadHeaderError
+from django.shortcuts import redirect
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+import smtplib
 # Create your views here.
 
 def index(request):
@@ -87,7 +93,6 @@ def awjt(request):
 #         else:
 #             form.add_error('password', 'Please enter a correct username and password. Note that both fields are case-sensitive.')
 #             msg['form_is_valid'] = False
-
 #         if username and password:
 #             user = authenticate(username=username, password=password)
 #             if user is not None:
@@ -104,3 +109,33 @@ def awjt(request):
 #                                          request=request
 #                                          )
 #     return JsonResponse(msg)
+
+def contact(request):
+    if request.method == 'GET':
+        form = contact_form()
+    else:
+        form = contact_form(request.POST)
+        if form.is_valid():
+            contact_name = "Name: " + form.cleaned_data['name']
+            contact_email = "Email: " + form.cleaned_data['email']
+            contact_message = "Message: " + form.cleaned_data['message']
+            try:
+                toaddr = "xyz@tamu.edu"
+                fromaddr = "abc@gmail.com"
+                msg = MIMEMultipart()
+                msg['From'] = fromaddr
+                msg['To'] = toaddr
+                msg['Subject'] = "Python email"
+                body = contact_name + "\n" + contact_email + "\n\n\n" + contact_message
+                msg.attach(MIMEText(body, 'plain'))
+                server = smtplib.SMTP('smtp.gmail.com', 587)
+                server.ehlo()
+                server.starttls()
+                server.ehlo()
+                server.login("sanjibbaral.nit", "")
+                text = msg.as_string()
+                server.sendmail(fromaddr, toaddr, text)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return render(request, "contact_us.html", {'form': form})
+    return render(request, "contact_us.html", {'form': form})

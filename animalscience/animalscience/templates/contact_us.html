@@ -84,36 +84,30 @@ input[type=submit]:hover {
 <div class="container">
     <div class="row">
         <div class="col-sm-8">    
-          <h4 class="mt-4 text-maroon">Message Us</h4>
-          <form action="#">
-            <label for="fname">Name</label>
-            <input type="text" id="fname" name="name" placeholder="Your name..">
-        
-            <label for="lname">Email</label>
-            <input type="text" id="lname" name="email" placeholder="Your Email">
-            
-            <label for="lname">Phone Number (optional)</label>
-            <input type="text" id="lname" name="phone" placeholder="Your Phone No">
-
-            <label for="subject">Subject</label>
-            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-        
-            <input type="submit" value="Submit">
-          </form>
-          <br>
+          <h2>Contact Us</h2>
+              <form class="form-horizontal" method="post" action="#">
+                {% csrf_token %}
+                {{form.as_p}}
+                
+                <div class="form-group">        
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                  </div>
+                </div>
+              </form>
         </div>
 
         
         <div class="col-sm-4">
-                <h4 class="mt-4 text-maroon">Contact Us</h4>
-                <address style="font-size: smaller;">
-                    <strong>Animal Behavior And Welfare Labratory</strong>&nbsp;&nbsp;&nbsp;<a class="text-maroon" href="http://aggiemap.tamu.edu/?MyMap=9140"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
-                    <br>Dept. of Animal Science
-                    <br>Room 212F Kleberg
-                    <br>Texas A&M University
-                    <br>College Station, TX USA 77843
-                    <br>
-                </address>
+            <h4 class="mt-4 text-maroon">Contact Us</h4>
+            <address style="font-size: smaller;">
+                <strong>Animal Behavior And Welfare Labratory</strong>&nbsp;&nbsp;&nbsp;<a class="text-maroon" href="http://aggiemap.tamu.edu/?MyMap=9140"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                <br>Dept. of Animal Science
+                <br>Room 212F Kleberg
+                <br>Texas A&M University
+                <br>College Station, TX USA 77843
+                <br>
+            </address>
         </div>
         <br>
     </div>
