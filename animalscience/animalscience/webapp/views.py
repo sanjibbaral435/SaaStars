@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from animalscience.webapp.models import ProjectsData
-from animalscience.webapp.models import researchdata, author_entity, article_entity, key_entity
+from animalscience.webapp.models import author_entity, article_entity, key_entity
 from animalscience.webapp.forms import PostForm
 from django.db.models import Value as V
 from django.db.models.functions import Concat
@@ -76,32 +75,32 @@ def peoples_rachel(request):
 def awjt(request):
 	return render(request, 'awjt.html')
 
-def login(request):
-    msg = dict()
-    if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
-        print (form.errors)
-        username = request.POST['username']
-        password = request.POST['password']
-        if form.is_valid():
-            msg['form_is_valid'] = True
-        else:
-            form.add_error('password', 'Please enter a correct username and password. Note that both fields are case-sensitive.')
-            msg['form_is_valid'] = False
+# def login(request):
+#     msg = dict()
+#     if request.method == 'POST':
+#         form = AuthenticationForm(data=request.POST)
+#         print (form.errors)
+#         username = request.POST['username']
+#         password = request.POST['password']
+#         if form.is_valid():
+#             msg['form_is_valid'] = True
+#         else:
+#             form.add_error('password', 'Please enter a correct username and password. Note that both fields are case-sensitive.')
+#             msg['form_is_valid'] = False
 
-        if username and password:
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    msg['form_is_valid'] = True
-                else:
-                    msg['form_is_valid'] = False
-    else:
-        form = AuthenticationForm()
-    context = {'form': form}
-    msg['html_form'] = render_to_string('partial_login.html',
-                                         context,
-                                         request=request
-                                         )
-    return JsonResponse(msg)
+#         if username and password:
+#             user = authenticate(username=username, password=password)
+#             if user is not None:
+#                 if user.is_active:
+#                     login(request, user)
+#                     msg['form_is_valid'] = True
+#                 else:
+#                     msg['form_is_valid'] = False
+#     else:
+#         form = AuthenticationForm()
+#     context = {'form': form}
+#     msg['html_form'] = render_to_string('partial_login.html',
+#                                          context,
+#                                          request=request
+#                                          )
+#     return JsonResponse(msg)
