@@ -134,7 +134,7 @@ def contact(request):
                 server.ehlo()
                 server.starttls()
                 server.ehlo()
-                server.login("", "")
+                server.login("tamu.awbl", "awbladmin123")
                 text = msg.as_string()
                 server.sendmail(fromaddr, toaddr, text)
             except BadHeaderError:
