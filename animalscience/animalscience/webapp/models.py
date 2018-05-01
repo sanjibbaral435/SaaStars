@@ -7,8 +7,10 @@ class author_entity(models.Model):
     Model representing an author.
     """
     author_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    first_name = models.CharField(max_length=100, default='none')
-    last_name = models.CharField(max_length=100, default='none')
+    first_name = models.CharField(max_length=100, default=None)
+    last_name = models.CharField(max_length=100, default=None)
+    class Meta:
+        unique_together = ('first_name', 'last_name',)
     
     def __str__(self):
         """
