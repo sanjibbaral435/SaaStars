@@ -160,4 +160,12 @@ def getemail_dum(subject):
     elif subject == 'Animal welfare club':
     	return ['sanjib435@tamu.edu', 'himgupt2@tamu.edu']
     else:
+    	return ['cdaigle@tamu.edu', 'rachelpark@tamu.edu']
+    	
+def getemail_dum(subject):
+    if subject == 'Undergraduate research' or subject == 'Graduate research' or subject == 'Other':
+    	return 'sanjib435@tamu.edu'
+    elif subject == 'Animal welfare club':
+    	return ['sanjib435@tamu.edu', 'himgupt2@tamu.edu']
+    else:
     	return ['shbhmbhrgv@tamu.edu', 'himgupt2@tamu.edu']
