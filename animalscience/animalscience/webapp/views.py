@@ -111,41 +111,61 @@ def awjt(request):
 #     return JsonResponse(msg)
 
 def contact(request):
-    if request.method == 'GET':
-        form = contact_form()
-    else:
-        form = contact_form(request.POST)
-        if form.is_valid():
-            contact_name = form.cleaned_data['name']
-            contact_email = form.cleaned_data['email']
-            contact_message = "Message: " + form.cleaned_data['message']
-            subject = form.cleaned_data['email_about']
-            
-            toaddr = getemail(subject)
-            try:
-                fromaddr = contact_name + contact_email
-                msg = MIMEMultipart()
-                msg['From'] = fromaddr
-                msg['To'] = ", ".join(toaddr)
-                msg['Subject'] = "Message From AWBL Website: " + subject
-                body = "Name: " + contact_name + "\n" + "Email: " + contact_email + "\n\n\n" + contact_message
-                msg.attach(MIMEText(body, 'plain'))
-                server = smtplib.SMTP('smtp.gmail.com', 587)
-                server.ehlo()
-                server.starttls()
-                server.ehlo()
-                server.login("tamu.awbl", "awbladmin123")
-                text = msg.as_string()
-                server.sendmail(fromaddr, toaddr, text)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return render(request, "contact_us.html", {'form': form})
-    return render(request, "contact_us.html", {'form': form})
+	flag = {}
+	flag['signal'] = "False"
+	if request.method == 'GET':
+		form = contact_form()
+	else:
+		form = contact_form(request.POST)
+		if form.is_valid():
+			contact_name = form.cleaned_data['name']
+			contact_email = form.cleaned_data['email']
+			contact_message = "Message: " + form.cleaned_data['message']
+			subject = form.cleaned_data['email_about']
+			toaddr = getemail_dum(subject)
+			try:
+				fromaddr = contact_name + contact_email
+				msg = MIMEMultipart()
+				msg['From'] = fromaddr
+				msg['To'] = ", ".join(toaddr)
+				msg['Subject'] = "Message From AWBL Website: " + subject
+				body = "Name: " + contact_name + "\n" + "Email: " + contact_email + "\n\n\n" + contact_message
+				msg.attach(MIMEText(body, 'plain'))
+				server = smtplib.SMTP('smtp.gmail.com', 587)
+				server.ehlo()
+				server.starttls()
+				server.ehlo()
+				server.login("tamu.awbl", "awbladmin123")
+				text = msg.as_string()
+				server.sendmail(fromaddr, toaddr, text)
+				#print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+				#print(server.data)
+			except BadHeaderError:
+				return HttpResponse('Invalid header found.')
+			return render(request, "contact_us.html", {'form': form})
+	return render(request, "contact_us.html", {'form': form})
     
-def getemail(subject):
+# def getemail(subject):
+#     if subject == 'Undergraduate research' or subject == 'Graduate research' or subject == 'Other':
+#     	return 'cdaigle@tamu.edu'
+#     elif subject == 'Animal welfare club':
+#     	return ['cdaigle@tamu.edu', 'menenses@tamu.edu']
+#     else:
+#     	return ['cdaigle@tamu.edu', 'rachelpark@tamu.edu']
+    	
+    	
+def getemail_dum(subject):
     if subject == 'Undergraduate research' or subject == 'Graduate research' or subject == 'Other':
-    	return 'cdaigle@tamu.edu'
+    	return 'sanjib435@tamu.edu'
     elif subject == 'Animal welfare club':
-    	return ['cdaigle@tamu.edu', 'menenses@tamu.edu']
+    	return ['sanjib435@tamu.edu', 'himgupt2@tamu.edu']
     else:
     	return ['cdaigle@tamu.edu', 'rachelpark@tamu.edu']
+    	
+def getemail_dum(subject):
+    if subject == 'Undergraduate research' or subject == 'Graduate research' or subject == 'Other':
+    	return 'sanjib435@tamu.edu'
+    elif subject == 'Animal welfare club':
+    	return ['sanjib435@tamu.edu', 'himgupt2@tamu.edu']
+    else:
+    	return ['shbhmbhrgv@tamu.edu', 'himgupt2@tamu.edu']

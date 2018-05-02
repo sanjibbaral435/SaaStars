@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['d50a1537400c45aa84298a35ef3c4f06.vfs.cloud9.us-east-2.amazonaws.com',
                 'fierce-thicket-54678.herokuapp.com',
+                'awbl.herokuapp.com',
                 '127.0.0.1',
                 '5d65dcd1c4ae448bb278f45d330d63e7.vfs.cloud9.us-west-2.amazonaws.com',
                 'c30807b2a68d4e7cae08da1f2ff792a9.vfs.cloud9.us-east-2.amazonaws.com',
