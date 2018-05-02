@@ -20,7 +20,8 @@ class author_entity(models.Model):
 
 class key_entity(models.Model):
     key_id = models.UUIDField(primary_key=True,default=uuid.uuid4)
-    keyword = models.CharField(max_length=100, default="")
+    keyword = models.CharField(max_length=100, default="",unique = True)
+    
     
     def __str__(self):
         """
@@ -31,7 +32,7 @@ class key_entity(models.Model):
     
 class article_entity(models.Model):
     article_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    article_title = models.CharField(max_length=200, default=None)
+    article_title = models.CharField(max_length=200, default=None, unique = True)
     # filename = models.CharField(max_length=200, default=None)
     link = models.CharField(max_length=200, default=None)
     article_year = models.CharField(max_length=4, default=None)
