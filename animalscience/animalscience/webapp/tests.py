@@ -15,6 +15,9 @@ import animalscience.webapp.views
 from django.urls import reverse
 import sys
 
+from urllib.request import urlopen
+import json
+
 # Create your tests here.
 class SimpleTest(TestCase):
     # def setUp(self):
@@ -214,25 +217,29 @@ class ArticleModelTest(TestCase):
 
 
 class PostFormTest(TestCase):
-
+    @classmethod
     def test_renew_title_label(self):
-        form = PostForm()        
-        self.assertTrue(form.fields['title'].label == None or form.fields['title'].label == 'Article Title')
+        form = PostForm()  
+        resp = form.fields['title'].label 
+        self.assertTrue(resp is 'Article Title', True)
 
     def test_renew_publication_label(self):
         form = PostForm()
-        self.assertTrue(form.fields['year'].label == None or form.fields['year'].label == 'Year of Publication')
+        resp = form.fields['year'].label 
+        self.assertTrue(resp == 'Year of Publication', True)
 
     def test_renew_author_label(self):
         form = PostForm()
-        self.assertTrue(form.fields['author'].label == None or form.fields['author'].label == 'Author Name')
-    
+        resp = form.fields['author'].label 
+        self.assertTrue(str(resp) == 'Author Name', True)
+
     def test_renew_keyword_label(self):
         form = PostForm()
-        self.assertTrue(form.fields['keyword'].label == None or form.fields['keyword'].label == 'Keywords')
+        resp = form.fields['keyword'].label
+        self.assertTrue(resp == 'Keywords', True)
 
 
-
+#py.test -x -s MYPACKAGE --cov-report html --cov MYPACKAGE
 
 class ViewTests(TestCase):
 
@@ -263,3 +270,80 @@ class ViewTests(TestCase):
         sys.stdout.flush()
         self.assertEqual(resp.status_code, 200)
         self.assertTrue( len(resp.context['articles_title_list']) == 13)
+        
+    def test_page_rachel(self):
+        resp = self.client.get('/peoples_rachel/') 
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, 'peoples_rachel.html')
+    
+    def test_page_amanda(self):
+        resp = self.client.get('/peoples_amanda/') 
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, 'peoples_amanda.html')
+    
+    def test_page_emily(self):
+        resp = self.client.get('/peoples_emily/') 
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, 'peoples_emily.html')
+    
+    def test_page_awdjt(self):
+        resp = self.client.get('/awjt/') 
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, 'awjt.html')
+
+    # def test_page_index(self):
+    #     resp = self.client.get('/$') 
+    #     self.assertEqual(resp.status_code, 200)
+    #     self.assertTemplateUsed(resp, 'index.html')
+    
+    def test_page_research(self):
+        resp = self.client.get('/research/') 
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, 'research.html')
+        
+    def test_page_courses(self):
+        resp = self.client.get('/courses/') 
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, 'courses.html')
+
+    def test_page_get_involved(self):
+        resp = self.client.get('/get_involved/') 
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, 'get_involved.html')
+        
+    def test_page_projects(self):
+        resp = self.client.get('/projects/') 
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, 'projects.html')
+        
+    def test_page_peoples(self):
+        resp = self.client.get('/peoples/') 
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, 'peoples.html')
+        
+    def test_page_contact_us(self):
+        resp = self.client.get('/contact_us/') 
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, 'contact_us.html')
+        
+
+    # def test_add_phage_req(self):
+    #     data = {"phage_lab": "Lab-A", "flag":1}
+    #     #self.client.login(username = "test_user", password= 'pass@123')
+    #     response = self.client.post('/articles/', data, follow=True)
+    #     approvePhage = response.json()['approvePhage']
+    #     approveCPTid = response.json()['approveCPTid']
+    #     self.assertEqual(approvePhage,1)
+    #     self.assertEqual(approveCPTid,1)
+        
+    def test_addAccount(self):
+        #article_entity.objects.create(article_title = "burrow", link="https://burrows.pdf", article_year ="1992")
+        #print ("\n My sample testcase \n")
+        response = self.client.post('/contact_us/',{'name':'pussycat dolls','email':"myhumps@gmail.com",'message':"myhumps_lovely little lumps","email_about":"kuch bhiii bc"}, follow = True)
+        print (response)
+        #print("---------------------------------------",response.read().decode('utf-8'),"++++++++++++++++++++++++++++++++++++++++++")
+        #string = response[1])
+        print( "========*****=========")
+        #print(response.content)
+        #json_obj = json.loads(string)
+        self.assertEqual(response.status_code, 200) 
