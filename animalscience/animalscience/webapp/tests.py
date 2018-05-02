@@ -31,22 +31,22 @@ class SimpleTest(TestCase):
         'username': 'abcde',
         'password': '12345'}
 
-    def create_user(self):
-        self.username = "hg"
-        self.password = "12345"
-        user, created = User.objects.get_or_create(username=self.username)
-        print(user, created)
-        #user.set_password(self.password)
-        user.is_staff = True
-        #user.is_superuser = True
-        #user.is_active = True
-        user.save()
-        self.user = user
+    # def create_user(self):
+    #     self.username = "hg"
+    #     self.password = "12345"
+    #     user, created = User.objects.get_or_create(username=self.username)
+    #     print(user, created)
+    #     #user.set_password(self.password)
+    #     user.is_staff = True
+    #     #user.is_superuser = True
+    #     #user.is_active = True
+    #     user.save()
+    #     self.user = user
     
-    def get_user(self):
-        user, get = User.objects.get_by_natural_key("hg")
-        print(user, get)
-        self.user = user
+    # def get_user(self):
+    #     user, get = User.objects.get_by_natural_key("hg")
+    #     print(user, get)
+    #     self.user = user
         
 
     # def test_secure_page(self):
@@ -245,6 +245,14 @@ class ViewTests(TestCase):
 
     @classmethod
     def setUpTestData(cls):
+        author_entity.objects.create(first_name='A', last_name='B')
+        author_entity.objects.create(first_name='Y', last_name='Z')
+        key_entity.objects.create(keyword='abc')
+        key_entity.objects.create(keyword='xyz')
+        
+        
+        article_entity.objects.create(article_title = "sample", link="https://sample.pdf", article_year ="1984", )
+        
         #Create 13 authors for pagination tests
         number_of_articles = 13
         for article_num in range(number_of_articles):
@@ -266,10 +274,10 @@ class ViewTests(TestCase):
 
     def test_lists_all_articles(self):
         resp = self.client.get(reverse('articles'))
-        print ("dfjkajkjfdljfaljf", resp.context)
+        #print ("dfjkajkjfdljfaljf", resp.context)
         sys.stdout.flush()
         self.assertEqual(resp.status_code, 200)
-        self.assertTrue( len(resp.context['articles_title_list']) == 13)
+        self.assertTrue( len(resp.context['articles_title_list']) == 14)
         
     def test_page_rachel(self):
         resp = self.client.get('/peoples_rachel/') 
@@ -291,10 +299,6 @@ class ViewTests(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertTemplateUsed(resp, 'awjt.html')
 
-    # def test_page_index(self):
-    #     resp = self.client.get('/$') 
-    #     self.assertEqual(resp.status_code, 200)
-    #     self.assertTemplateUsed(resp, 'index.html')
     
     def test_page_research(self):
         resp = self.client.get('/research/') 
@@ -326,19 +330,48 @@ class ViewTests(TestCase):
         self.assertEqual(resp.status_code, 200)
         self.assertTemplateUsed(resp, 'contact_us.html')
         
-
-    # def test_add_phage_req(self):
-    #     data = {"phage_lab": "Lab-A", "flag":1}
-    #     #self.client.login(username = "test_user", password= 'pass@123')
-    #     response = self.client.post('/articles/', data, follow=True)
-    #     approvePhage = response.json()['approvePhage']
-    #     approveCPTid = response.json()['approveCPTid']
-    #     self.assertEqual(approvePhage,1)
-    #     self.assertEqual(approveCPTid,1)
+    def test_searcharticle_title(self):
+        response = self.client.post('/articles/',{'title':'sample','year':'','author':'', 'keyword':''})
+        a = list(response.context['articles_title_list'].values('article_title'))
+        self.assertEqual(a[0]['article_title'], 'sample')
         
-    def test_addAccount(self):
-        #article_entity.objects.create(article_title = "burrow", link="https://burrows.pdf", article_year ="1992")
-        #print ("\n My sample testcase \n")
-        response = self.client.post('/contact_us/',{'name':'pussycat dolls','email':"myhumps@gmail.com",'message':"myhumps_lovely little lumps","email_about":"kuch bhiii bc"}, follow = True)
-        print( "========*****=========")
+    def test_searcharticle_null(self):
+        response = self.client.post('/articles/',{'title':'','year':'','author':'', 'keyword':''})
+        self.assertTrue( len(response.context['articles_title_list']) == 14)
+        
+    def test_searchmultiarticle_title(self):
+        response = self.client.post('/articles/',{'title':'burrow 1','year':'','author':'', 'keyword':''})
+        # burrow 1, burrow 10, burrow 11, burrow 12
+        self.assertTrue( len(response.context['articles_title_list']) == 4)
+        
+    def test_searcharticle_year(self):
+        response = self.client.post('/articles/',{'title':'','year':'1984','author':'', 'keyword':''})
+        a = list(response.context['articles_title_list'].values('article_title'))
+        self.assertEqual(a[0]['article_title'], 'sample')
+        
+    def test_searcharticle_author(self):
+        response = self.client.post('/articles/',{'title':'','year':'','author':'A,B', 'keyword':''})
+        a = list(response.context['articles_title_list'].values('article_title'))
+        self.assertEqual(len(a), 0)
+        
+    def test_searcharticle_keyword(self):
+        response = self.client.post('/articles/',{'title':'','year':'','author':'', 'keyword':'xyz'})
+        a = list(response.context['articles_title_list'].values('article_title'))
+        self.assertEqual(len(a), 0)
+        
+    def test_contact_other(self):
+        response = self.client.post('/contact_us/',{'name':'samplename','email':"contactsample@gmail.com",'message':"testing message","email_about":"testing functionality"}, follow = True)
+        self.assertEqual(response.status_code, 200) 
+        
+    def test_contact_undergrad(self):
+        response = self.client.post('/contact_us/',{'name':'samplename','email':"contactsample@gmail.com",'message':"testing message","email_about":"Undergraduate research"}, follow = True)
+        self.assertEqual(response.status_code, 200) 
+        
+    def test_contact_animalwelfare(self):
+        response = self.client.post('/contact_us/',{'name':'samplename','email':"contactsample@gmail.com",'message':"testing message","email_about":"Animal welfare club"}, follow = True)
+        self.assertEqual(response.status_code, 200) 
+        
+    def test_contact_nullfields(self):
+        
+        response = self.client.post('/contact_us/',{'name':'','email':"",'message':"","email_about":""}, follow = True)
         self.assertEqual(response.status_code, 200) 

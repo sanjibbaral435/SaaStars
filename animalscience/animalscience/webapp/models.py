@@ -55,12 +55,12 @@ class article_entity(models.Model):
     def display_authors(self):
         # Create a string of authors to display on admin
         return ', '.join([ authors.last_name for authors in self.authors.all()[:3] ])
-        display_authors.short_description = 'Authors'
+    display_authors.short_description = 'Authors'
 
     def display_keywords(self):
         # Create astring of  keywords to dislay on admin
         return ', '.join([ keywords.keyword for keywords in self.keywords.all()[:3] ])
-        display_keywords.short_description = 'Keywords'
+    display_keywords.short_description = 'Keywords'
     
     
 # class researchdata(models.Model):
